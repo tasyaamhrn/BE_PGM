@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Memo extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'judul',
+        'deskripsi',
+        'tanggal',
+        'status',
+        'bukti',
+        'catatan'
+    ];
 }
