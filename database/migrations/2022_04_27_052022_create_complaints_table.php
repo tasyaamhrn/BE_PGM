@@ -15,16 +15,16 @@ class CreateComplaintsTable extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
-            $table->integer('cust_id');
-            $table->integer('category_id');
+            $table->unsignedBigInteger('cust_id');
+            $table->unsignedBigInteger('category_id');
             $table->integer('type');
             $table->string('judul');
             $table->string('deskripsi');
-            $table->dateTime('waktu');
+            $table->date('tanggal');
             $table->integer('status');
-            $table->string('bukti');
-            $table->integer('feedback_score');
-            $table->string('feedback_deskripsi');
+            $table->string('bukti')->nullable();
+            $table->integer('feedback_score')->nullable();
+            $table->string('feedback_deskripsi')->nullable();
             $table->foreign('cust_id')
                   ->references('id')->on('customers')
                   ->onDelete('cascade');

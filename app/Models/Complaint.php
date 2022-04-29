@@ -15,7 +15,7 @@ class Complaint extends Model
         'type',
         'judul',
         'deskripsi',
-        'waktu',
+        'tanggal',
         'status',
         'bukti',
         'feedback_score',

@@ -15,7 +15,7 @@ class CreateMemosTable extends Migration
     {
         Schema::create('memos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->string('judul');
             $table->string('deskripsi');
             $table->date('tanggal');
@@ -24,8 +24,8 @@ class CreateMemosTable extends Migration
             $table->string('catatan');
             $table->timestamps();
             $table->foreign('user_id')
-            ->references('id')->on('users')
-            ->onDelete('cascade');
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
         });
     }
 

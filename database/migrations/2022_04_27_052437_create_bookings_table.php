@@ -15,17 +15,17 @@ class CreateBookingsTable extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('cust_id')->nullable()->default(12);
-            $table->bigInteger('product_id')->nullable()->default(12);
+            $table->unsignedBigInteger('cust_id');
+            $table->unsignedBigInteger('product_id');
             $table->string('bukti');
-            $table->integer('status')->unsigned()->nullable()->default(12);
+            $table->integer('status')->unsigned()->nullable();
             $table->timestamps();
             $table->foreign('cust_id')
-            ->references('id')->on('customers')
-            ->onDelete('cascade');
+                  ->references('id')->on('customers')
+                  ->onDelete('cascade');
             $table->foreign('product_id')
-            ->references('id')->on('products')
-            ->onDelete('cascade');
+                  ->references('id')->on('products')
+                  ->onDelete('cascade');
         });
     }
 
