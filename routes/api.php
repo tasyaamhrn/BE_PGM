@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\CategorytController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
