@@ -59,7 +59,20 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        $role = Role::find($id);
+        if ($role) {
+            return response()->json([
+                'success' => true,
+                'message' => "Data Role",
+                'data'    => $role
+            ],200);
+        }else {
+            return response()->json([
+                'success' => false,
+                'message' => "Data Not Found",
+                'data' => []
+            ],404);
+        }
     }
 
     /**
