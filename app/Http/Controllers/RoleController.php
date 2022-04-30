@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
 
 class RoleController extends Controller
@@ -93,9 +94,26 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Role $role)
     {
-        //
+        $data = $request->all();
+        $rules = [
+            'name'          => 'required',
+        ];
+
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+        $role->update($data);
+        $response = [
+            'success'   => true,
+            'message'   => 'Data Role Updated',
+            'data'      => $role,
+        ];
+        return response()->json($response, Response::HTTP_OK);
+
+
     }
 
     /**
