@@ -19,8 +19,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->unsignedBigInteger('role_id');
-            $table->unsignedBigInteger('cust_id');
-            $table->unsignedBigInteger('dept_id');
+            $table->unsignedBigInteger('cust_id')->nullable();
+            $table->unsignedBigInteger('employee_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('role_id')
@@ -29,8 +29,8 @@ class CreateUsersTable extends Migration
             $table->foreign('cust_id')
                   ->references('id')->on('customers')
                   ->onDelete('cascade');
-            $table->foreign('dept_id')
-                  ->references('id')->on('departemens')
+            $table->foreign('employee_id')
+                  ->references('id')->on('employees')
                   ->onDelete('cascade');
         });
     }
