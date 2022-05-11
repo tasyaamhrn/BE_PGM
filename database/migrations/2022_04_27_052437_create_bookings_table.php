@@ -18,13 +18,16 @@ class CreateBookingsTable extends Migration
             $table->unsignedBigInteger('cust_id');
             $table->unsignedBigInteger('product_id');
             $table->string('bukti');
-            $table->integer('status')->unsigned()->nullable();
+            $table->unsignedBigInteger('status')->nullable();
             $table->timestamps();
             $table->foreign('cust_id')
                   ->references('id')->on('customers')
                   ->onDelete('cascade');
             $table->foreign('product_id')
                   ->references('id')->on('products')
+                  ->onDelete('cascade');
+            $table->foreign('status')
+                  ->references('id')->on('status_bookings')
                   ->onDelete('cascade');
         });
     }

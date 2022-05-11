@@ -16,8 +16,12 @@ class CreateMeetingsTable extends Migration
         Schema::create('meetings', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal');
+            $table->string('judul');
             $table->string('notulensi');
-            $table->string('peserta');
+            $table->unsignedBigInteger('employee_id');
+            $table->foreign('employee_id')
+            ->references('id')->on('employees')
+            ->onDelete('cascade');
             $table->timestamps();
         });
     }

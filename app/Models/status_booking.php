@@ -5,14 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Meeting extends Model
+class status_booking extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'tanggal',
-        'judul',
-        'notulensi',
-        'employee_id'
-    ];
+    protected $fillable = ['name'];
 }

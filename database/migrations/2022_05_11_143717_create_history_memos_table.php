@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateHistoryMemosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('history_memos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->unsignedBigInteger('dept_id');
+            $table->unsignedBigInteger('memo_id');
+            $table->string('catatan');
+            $table->string('bukti');
             $table->timestamps();
-            $table->foreign('dept_id')
-            ->references('id')->on('departemens')
+            $table->foreign('memo_id')
+            ->references('id')->on('memos')
             ->onDelete('cascade');
         });
     }
@@ -31,6 +32,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('history_memos');
     }
 }

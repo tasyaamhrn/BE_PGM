@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateStatusBookingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('status_bookings', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('dept_id');
             $table->timestamps();
-            $table->foreign('dept_id')
-            ->references('id')->on('departemens')
-            ->onDelete('cascade');
         });
     }
 
@@ -31,6 +27,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('status_bookings');
     }
 }

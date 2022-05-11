@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Memo extends Model
+class history_memo extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'employee_id_pengirim',
-        'employee_id_penerima',
-        'meeting_id',
-        'judul',
-        'deskripsi',
-        'tanggal',
-        'status'
+        'memo_id',
+        'catatan',
+        'bukti'
     ];
 }

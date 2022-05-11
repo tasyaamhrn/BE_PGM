@@ -15,16 +15,22 @@ class CreateMemosTable extends Migration
     {
         Schema::create('memos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('employee_id_pengirim');
+            $table->unsignedBigInteger('employee_id_penerima');
+            $table->unsignedBigInteger('meeting_id')->nullabe();
             $table->string('judul');
             $table->string('deskripsi');
             $table->date('tanggal');
             $table->integer('status');
-            $table->string('bukti');
-            $table->string('catatan');
             $table->timestamps();
-            $table->foreign('user_id')
-                  ->references('id')->on('users')
+            $table->foreign('employee_id_pengirim')
+                  ->references('id')->on('employees')
+                  ->onDelete('cascade');
+            $table->foreign('employee_id_penerima')
+                  ->references('id')->on('employees')
+                  ->onDelete('cascade');
+            $table->foreign('meeting_id')
+                  ->references('id')->on('meetings')
                   ->onDelete('cascade');
         });
     }
