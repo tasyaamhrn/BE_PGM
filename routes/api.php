@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\CategoryController;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,21 +19,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
+
+Route::group(['middleware'=>'auth:api'],function(){
+    Route::get('/departemen',[DepartementController::class,'index']);
+    Route::post('/departemen',[DepartementController::class,'store']);
+    Route::get('/departemen/{id}', [DepartementController::class, 'show']);
+    Route::post('/departemen/edit/{departemen}',[DepartementController::class,'update']);
+    Route::delete('/departemen/{id}',[DepartementController::class,'destroy']);
+    Route::post('/category',[CategoryController::class,'store']);
+    Route::get('/category',[CategoryController::class,'index']);
+    Route::get('/category/{id}', [CategoryController::class, 'show']);
+    Route::post('/category/edit/{category}',[CategoryController::class,'update']);
+    Route::delete('/category/{id}',[CategoryController::class,'destroy']);
+
 });
 
-Route::get('/role',[RoleController::class,'index']);
-Route::get('/role/{id}', [RoleController::class, 'show']);
-Route::post('/role',[RoleController::class,'store']);
-Route::post('/role/edit/{role}',[RoleController::class,'update']);
-Route::get('/departemen',[DepartementController::class,'index']);
-Route::post('/departemen',[DepartementController::class,'store']);
-Route::get('/departemen/{id}', [DepartementController::class, 'show']);
-Route::post('/departemen/edit/{departemen}',[DepartementController::class,'update']);
-Route::delete('/departemen/{id}',[DepartementController::class,'destroy']);
-Route::post('/category',[CategoryController::class,'store']);
-Route::get('/category',[CategoryController::class,'index']);
-Route::get('/category/{id}', [CategoryController::class, 'show']);
-Route::post('/category/edit/{category}',[CategoryController::class,'update']);
-Route::delete('/category/{id}',[CategoryController::class,'destroy']);
+
+
