@@ -12,4 +12,12 @@ class Category extends Model
     protected $fillable = [
         'name',
         'dept_id'];
+
+    public function complaint(){
+     return $this->hasMany(Complaint::class,'category_id','id');
+     }
+
+     public function departemen(){
+        return $this->belongsTo(Departemen::class);
+    }
 }

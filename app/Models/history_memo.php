@@ -14,4 +14,7 @@ class history_memo extends Model
         'catatan',
         'bukti'
     ];
+    public function memo(){
+        return $this->belongsTo(Memo::class);
+    }
 }

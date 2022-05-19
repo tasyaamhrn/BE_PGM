@@ -18,4 +18,13 @@ class Memo extends Model
         'tanggal',
         'status'
     ];
+    public function employee(){
+        return $this->belongsTo(Employee::class);
+    }
+    public function history_memo(){
+        return $this->hasMany(history_memo::class,'memo_id','id');
+      }
+    public function meeting(){
+        return $this->belongsTo(Meeting::class);
+    }
 }

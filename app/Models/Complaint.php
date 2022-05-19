@@ -21,4 +21,10 @@ class Complaint extends Model
         'feedback_score',
         'feedback_deskripsi'
     ];
+    public function customer(){
+        return $this->belongsTo(Customer::class);
+    }
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -9,4 +9,10 @@ class status_booking extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
+
+    public function booking()
+    {
+        return $this->hasOne(Booking::class,'status','id');
+    }
+
 }

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('/addemployee',[EmployeeController::class,'register']);
+Route::GET('/addemployee',[EmployeeController::class,'register']);
 
 Route::get('/', function () {
     return view('auth.login');

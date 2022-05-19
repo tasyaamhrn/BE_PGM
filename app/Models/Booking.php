@@ -15,4 +15,10 @@ class Booking extends Model
         'bukti',
         'status'
     ];
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+    public function status_booking(){
+        return $this->belongsTo(status_booking::class);
+    }
 }

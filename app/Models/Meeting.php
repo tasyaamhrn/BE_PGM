@@ -15,4 +15,10 @@ class Meeting extends Model
         'notulensi',
         'employee_id'
     ];
+    public function employee(){
+        return $this->belongsTo(Employee::class);
+    }
+    public function memo(){
+        return $this->hasMany(Memo::class,'meeting_id','id');
+      }
 }

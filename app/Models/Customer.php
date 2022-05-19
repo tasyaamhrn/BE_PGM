@@ -17,4 +17,11 @@ class Customer extends Model
         'phone',
         'user_id'
     ];
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function complaint(){
+        return $this->hasMany(Complaint::class,'cust_id','id');
+    }
 }
