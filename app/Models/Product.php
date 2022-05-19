@@ -18,4 +18,10 @@ class Product extends Model
         'tanah_lebih',
         'discount'
     ];
+    public function booking()
+    {
+        return $this->hasOne(Booking::class,'product_id','id');
+    }
+
+
 }
