@@ -16,5 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::GET('/addemployee',[EmployeeController::class,'register']);
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('layouts.app');
 });
