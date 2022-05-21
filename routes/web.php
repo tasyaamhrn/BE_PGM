@@ -22,3 +22,6 @@ Route::get('/layouts', function () {
 Route::get('/', function () {
     return view('auth.login');
 });
+
+//employee
+Route::GET('/employee',[EmployeeController::class,'index']);

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
@@ -51,4 +52,12 @@ class EmployeeController extends Controller
            return response()->json(['success'=>1,'message'=>'Register Berhasil']);
        }
    }
+
+    public function index(){
+        $data_employee = DB::select("SELECT email,name,address,phone,avatar,dept_name FROM users 
+            LEFT JOIN (SELECT employees.*, departemens.name AS dept_name FROM employees 
+            INNER JOIN departemens ON employees.dept_id=departemens.id) employees ON employees.user_id=users.id
+            WHERE users.role='EMPLOYEE'");
+        return view('employee.index', compact('data_employee'));
+    }
 }
