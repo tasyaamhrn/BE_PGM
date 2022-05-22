@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::GET('/addemployee',[EmployeeController::class,'register']);
 
 Route::get('/layouts', function () {
     return view('layouts.app');
@@ -25,3 +24,4 @@ Route::get('/', function () {
 
 //employee
 Route::GET('/employee',[EmployeeController::class,'index']);
+Route::post('employee',[EmployeeController::class,'store'])->name('employee.store');
