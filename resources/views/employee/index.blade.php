@@ -128,8 +128,8 @@
                     <span class="text-secondary text-xs font-weight-bold">{{$employee->dept_name}}</span>
                   </td>
                   <td class="align-middle text-center text-sm">
-                    <button type="button" class="btn btn-warning" href="{{ url('employee/edit/{employee}') }}">Edit</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
+                    <a type="button" class="btn btn-warning" href="{{ url('employee/edit/{employee}') }}">Edit</a>
+                    <a type="button" class="btn btn-danger" href="{{ url('employee/edit/{employee}') }}">Delete</a>
                   </td>
                 </tr>
                 @endforeach
