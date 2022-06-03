@@ -129,7 +129,7 @@
                   </td>
                   <td class="align-middle text-center text-sm">
                     <a type="button" class="btn btn-warning" href="{{ url('employee/edit/{employee}') }}">Edit</a>
-                    <a type="button" class="btn btn-danger" href="{{ url('employee/edit/{employee}') }}">Delete</a>
+                    <a type="button" class="btn btn-danger" href="{{ url('employee/delete') }}">Delete</a>
                   </td>
                 </tr>
                 @endforeach

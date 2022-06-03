@@ -57,8 +57,8 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $data_employee = DB::select("SELECT email,name,address,phone,avatar,dept_name FROM users 
-            LEFT JOIN (SELECT employees.*, departemens.name AS dept_name FROM employees 
+        $data_employee = DB::select("SELECT email,name,address,phone,avatar,dept_name FROM users
+            LEFT JOIN (SELECT employees.*, departemens.name AS dept_name FROM employees
             INNER JOIN departemens ON employees.dept_id=departemens.id) employees ON employees.user_id=users.id
             WHERE users.role='EMPLOYEE'");
         $data_departemen = Departemen::all();
@@ -66,6 +66,16 @@ class EmployeeController extends Controller
     }
 
     public function update(Request $request, Employee $employee){
-        
+
+    }
+    public function destroy($id){
+        $employee = Employee::find($id);
+        if($employee)
+        {
+            $employee->delete();
+            return response()->json(['message'=>'Employee Deleted Sucessfully'], 200);
+        }else{
+            return response()->json(['message'=>'Employee Not Found'], 404);
+        }
     }
 }

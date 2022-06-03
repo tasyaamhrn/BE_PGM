@@ -25,4 +25,5 @@ Route::get('/', function () {
 //employee
 Route::GET('/employee',[EmployeeController::class,'index']);
 Route::post('employee',[EmployeeController::class,'store'])->name('employee.store');
-Route::post('employee/edit/{employee}',[EmployeeController::class,'update'])->name('employee.update');
+Route::post('employee/edit/{employee}',[EmployeeController::class,'update']);
+Route::delete('/employee/{id}',[EmployeeController::class,'destroy']);
