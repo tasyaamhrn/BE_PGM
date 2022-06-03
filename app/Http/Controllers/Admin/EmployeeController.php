@@ -64,4 +64,8 @@ class EmployeeController extends Controller
         $data_departemen = Departemen::all();
         return view('employee.index', compact('data_employee', 'data_departemen'));
     }
+
+    public function update(Request $request, Employee $employee){
+        
+    }
 }
