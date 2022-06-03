@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 @section('pages')
+
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
     <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
@@ -10,8 +11,8 @@
 </nav>
 @endsection
 <!-- Button trigger modal -->
-<button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#AddModal">
-  <i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Card</a>
+<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#AddModal">
+  <i class="fas fa-plus"></i>&nbsp;&nbsp;Add Employee</a>
 </button>
 <!-- Modal -->
 <div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="AddModalLabel" data-backdrop="false" aria-hidden="true">
