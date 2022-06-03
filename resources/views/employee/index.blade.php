@@ -128,8 +128,8 @@
                     <span class="text-secondary text-xs font-weight-bold">{{$employee->dept_name}}</span>
                   </td>
                   <td class="align-middle text-center text-sm">
-                    <button type="button" class="btn btn-warning">Warning</button>
-                    <button type="button" class="btn btn-danger">Danger</button>
+                    <button type="button" class="btn btn-warning">Edit</button>
+                    <button type="button" class="btn btn-danger">Delete</button>
                   </td>
                 </tr>
                 @endforeach
