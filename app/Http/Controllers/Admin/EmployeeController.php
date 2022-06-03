@@ -51,7 +51,7 @@ class EmployeeController extends Controller
             'user_id' => $select_user->id
         ]);
         if ($employee) {
-            return view('employee.index');
+            return redirect()->back();
         }
     }
 
