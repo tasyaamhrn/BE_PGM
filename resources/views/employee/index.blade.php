@@ -2,13 +2,14 @@
 @section('content')
 <!-- Page -->
 @section('page')
+
 <div class="col-12 align-self-center">
-  <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Modals</h4>
+  <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Employee</h4>
   <div class="d-flex align-items-center">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb m-0 p-0">
-        <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-        <li class="breadcrumb-item text-muted active" aria-current="page">Library</li>
+        <li class="breadcrumb-item"><a href="index.html" class="text-muted">Dashboard</a></li>
+        <li class="breadcrumb-item text-muted active" aria-current="page">Employee</li>
       </ol>
     </nav>
   </div>
@@ -17,12 +18,12 @@
 <!-- End Page -->
 <!-- Modal Add Employee -->
 <!-- Button Modal-->
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#warning-header-modal">Add Employee</button>
+<button type="button" id="add" class=" btn btn-rounded" data-toggle="modal" data-target="#warning-header-modal">Add Employee</button>
 <!-- End Button Modal -->
 <div id="warning-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
-      <div class="modal-header modal-colored-header bg-warning">
+      <div id="modals" class="modal-header modal-colored-header ">
         <h4 class="modal-title" id="warning-header-modalLabel">Add Employee
         </h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -64,7 +65,7 @@
             <label for="message-text" class="col-form-label">Avatar</label>
             <div>
               <input type="file" class="form-control" name="avatar">
-              <label><b>*Jika tidak di ganti kosongkan saja</b></label>
+              <label><b>*Jika tidak ada kosongkan saja</b></label>
             </div>
           </div>
           <div class="form-group">
@@ -81,7 +82,7 @@
             </div>
           </div>
           <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button id="btn" type="submit" class="btn btn-block">Submit</button>
           </div>
         </form>
       </div>
@@ -127,14 +128,14 @@
                 </td>
                 <td>{{$employee->dept_name}}</td>
                 <td>
-                  <a class="btn btn-warning waves-effect waves-light" type="button" 
+                  <a id="edit" class="btn btn-circle btn-lg btn-warning" type="button"
                   href="{{ url('employee/edit/{employee}') }}>
                     <span class="btn-label"><i class="far fa-edit"></i></span>
-                    Edit</a>
-                  <a class="btn btn-danger waves-effect waves-light" type="button"
+                    </a>
+                  <a class="btn btn-circle btn-lg btn-danger" type="button"
                   href="{{ url('employee/delete/{employee}') }}>
                     <span class="btn-label"><i class="far fa-trash-alt"></i></span>
-                    Delete</a>
+                    </a>
                 </td>
               </tr>
               @endforeach
