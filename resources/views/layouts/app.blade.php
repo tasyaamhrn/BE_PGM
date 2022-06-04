@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png')}}">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/logo.png')}}">
+    <title>Service Automotion</title>
     <!-- Custom CSS -->
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
@@ -61,17 +61,17 @@
                         <a href="index.html">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="{{ asset('assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                                <img src="{{ asset('assets/images/logo.png')}}" width="60" height="80" style="margin-left:50px; margin-top:20px;"  alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="{{ asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
+                                <img src="{{ asset('assets/images/logo.png')}}" width="60" height="80"  alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
-                            <span class="logo-text">
+                            {{-- <span class="logo-text"> --}}
                                 <!-- dark Logo text -->
-                                <img src="{{ asset('assets/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
+                                {{-- <img src="{{ asset('assets/images/logo-text.png')}}" alt="homepage" class="dark-logo" /> --}}
                                 <!-- Light Logo text -->
-                                <img src="{{ asset('assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" />
+                                {{-- <img src="{{ asset('assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" /> --}}
                             </span>
                         </a>
                     </div>
@@ -162,7 +162,7 @@
 
                         <li class="sidebar-item"> <a class="sidebar-link" href="ticket-list.html"
                                 aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
-                                    class="hide-menu">Ticket List
+                                    class="hide-menu">Employee
                                 </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-chat.html"
@@ -377,11 +377,11 @@
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            
+
             <div class="container-fluid">
                 @yield('content')
             </div>
-            
+
             <footer class="footer text-center text-muted">
                 All Rights Reserved by Adminmart. Designed and Developed by <a
                     href="https://wrappixel.com">WrapPixel</a>.

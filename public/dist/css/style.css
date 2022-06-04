@@ -7524,8 +7524,8 @@ a.text-purple:hover, a.text-purple:focus {
     color: inherit;
     border-color: #e8eef3; } }
 
-/*============================================================== 
- For all pages 
+/*==============================================================
+ For all pages
  ============================================================== */
 #main-wrapper {
   width: 100%;
@@ -7943,6 +7943,7 @@ sidebar navigation
         align-items: center;
         line-height: 27px;
         opacity: .7;
+
         margin-right: 17px; }
         .sidebar-nav #sidebarnav .sidebar-item .sidebar-link .feather-icon,
         .sidebar-nav #sidebarnav .sidebar-item .sidebar-link i {
@@ -7952,9 +7953,11 @@ sidebar navigation
           color: #fff;
           display: inline-block;
           text-align: center;
+
           margin-right: 8px; }
         .sidebar-nav #sidebarnav .sidebar-item .sidebar-link.active, .sidebar-nav #sidebarnav .sidebar-item .sidebar-link:hover {
-          opacity: 1; }
+          opacity: 1;
+          }
         .sidebar-nav #sidebarnav .sidebar-item .sidebar-link .hide-menu {
           overflow: hidden;
           text-overflow: ellipsis;
@@ -7962,6 +7965,7 @@ sidebar navigation
       .sidebar-nav #sidebarnav .sidebar-item.selected > .sidebar-link {
         border-radius: 0px 60px 60px 0px;
         color: #fff !important;
+        /* background-color: #EB6123; */
         background: linear-gradient(to right, #8971ea, #7f72ea, #7574ea, #6a75e9, #5f76e8);
         box-shadow: 0px 7px 12px 0px rgba(95, 118, 232, 0.21);
         opacity: 1; }
@@ -7969,7 +7973,8 @@ sidebar navigation
         .sidebar-nav #sidebarnav .sidebar-item.selected > .sidebar-link i {
           color: #fff; }
         .sidebar-nav #sidebarnav .sidebar-item.selected > .sidebar-link .has-arrow::after {
-          border-color: #fff; }
+          border-color: #fff;
+          background-color: #EB6123; }
       .sidebar-nav #sidebarnav .sidebar-item .first-level {
         padding: 0 0 10px 0; }
         .sidebar-nav #sidebarnav .sidebar-item .first-level .nav-small-cap {
