@@ -3,12 +3,12 @@
 <!-- Page -->
 @section('page')
 <div class="col-12 align-self-center">
-  <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Employee</h4>
+  <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Modals</h4>
   <div class="d-flex align-items-center">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb m-0 p-0">
         <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-        <li class="breadcrumb-item text-muted active" aria-current="page">Employee</li>
+        <li class="breadcrumb-item text-muted active" aria-current="page">Library</li>
       </ol>
     </nav>
   </div>
@@ -16,9 +16,9 @@
 @endsection
 <!-- End Page -->
 <!-- Modal Add Employee -->
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#warning-header-modal">
-  Add Employee
-</button>
+<!-- Button Modal-->
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#warning-header-modal">Add Employee</button>
+<!-- End Button Modal -->
 <div id="warning-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
@@ -85,10 +85,9 @@
           </div>
         </form>
       </div>
-    </div>
-  </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div>
-<<<<<<< HEAD
 <!-- End Modal Add Employee -->
 <br>
 <br>
@@ -98,6 +97,7 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Employee Table</h4>
+
         <div class="table-responsive">
           <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
             <thead>
@@ -119,79 +119,23 @@
                 <td>{{$employee->address}}</td>
                 <td>{{$employee->phone}}</td>
                 <td>
-                  @if($employee->avatar)
-                  <img src="{{ asset('avatar/'.$employee->avatar) }}" class="avatar" alt="avatar">
-                  @else
-                  <img src="{{ asset('avatar/user.png') }}" class="avatar" alt="avatar">
-                  @endif
+                  <img src="{{ asset('avatar/'.$employee->avatar) }}" alt="avatar" class="avatar" />
                 </td>
                 <td>{{$employee->dept_name}}</td>
                 <td>
-                  <a class="btn btn-warning waves-effect waves-light" 
-                  type="button" href="{{ url('employee/edit/{employee}') }}">
-                    <span class="btn-label"><i class=" far fa-edit"></i></span>
-                    Mail</a>
-                    <a class="btn btn-danger waves-effect waves-light" 
-                  type="button" href="{{ url('employee/delete/{employee}') }}">
-                    <span class="btn-label"><i class="fas fa-trash-alt"></i></span>
-                    Mail</a>
+                  <a class="btn btn-warning waves-effect waves-light" type="button" 
+                  href="{{ url('employee/edit/{employee}') }}>
+                    <span class="btn-label"><i class="far fa-edit"></i></span>
+                    Edit</a>
+                  <a class="btn btn-danger waves-effect waves-light" type="button"
+                  href="{{ url('employee/delete/{employee}') }}>
+                    <span class="btn-label"><i class="far fa-trash-alt"></i></span>
+                    Delete</a>
                 </td>
               </tr>
               @endforeach
             </tbody>
           </table>
-=======
-<div class="container-fluid py-4">
-  <div class="row">
-    <div class="col-12">
-      <div class="card mb-4">
-        <div class="card-header pb-0">
-          <h6>Employee Table</h6>
-        </div>
-        <div class="card-body px-0 pt-0 pb-2">
-          <div class="table-responsive p-0">
-            <table class="table align-items-center justify-content-center mb-0">
-              <thead>
-                <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">Email</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">Name</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">Address</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">Phone</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">Avatar</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">Departemen</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder text-center">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach($data_employee as $employee)
-                <tr>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-secondary text-xs font-weight-bold">{{$employee->email}}</span>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-secondary text-xs font-weight-bold">{{$employee->name}}</span>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-secondary text-xs font-weight-bold">{{$employee->address}}</span>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-secondary text-xs font-weight-bold">{{$employee->phone}}</span>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <img src="{{ asset('avatar/'.$employee->avatar) }}" class="avatar avatar-sm me-3" alt="user1">
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-secondary text-xs font-weight-bold">{{$employee->dept_name}}</span>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <a type="button" class="btn btn-warning" href="{{ url('employee/edit/{employee}') }}">Edit</a>
-                    <a type="button" class="btn btn-danger" href="{{ url('employee/delete') }}">Delete</a>
-                  </td>
-                </tr>
-                @endforeach
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
     </div>
