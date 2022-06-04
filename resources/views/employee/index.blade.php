@@ -119,7 +119,11 @@
                 <td>{{$employee->address}}</td>
                 <td>{{$employee->phone}}</td>
                 <td>
+                  @if($employee->avatar)
                   <img src="{{ asset('avatar/'.$employee->avatar) }}" alt="avatar" class="avatar" />
+                  @else
+                  <img src="{{ asset('avatar/user.png') }}" alt="avatar" class="avatar" />
+                  @endif
                 </td>
                 <td>{{$employee->dept_name}}</td>
                 <td>
