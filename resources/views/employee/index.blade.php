@@ -1,28 +1,31 @@
 @extends('layouts.app')
 @section('content')
-@section('pages')
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Employee</li>
-  </ol>
-  <h6 class="font-weight-bolder mb-0">Employee</h6>
-</nav>
+<!-- Page -->
+@section('page')
+<div class="col-12 align-self-center">
+  <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Employee</h4>
+  <div class="d-flex align-items-center">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb m-0 p-0">
+        <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
+        <li class="breadcrumb-item text-muted active" aria-current="page">Employee</li>
+      </ol>
+    </nav>
+  </div>
+</div>
 @endsection
-<!-- Button trigger modal -->
-<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#AddModal">
-  <i class="fas fa-plus"></i>&nbsp;&nbsp;Add Employee</a>
+<!-- End Page -->
+<!-- Modal Add Employee -->
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#warning-header-modal">
+  Add Employee
 </button>
-<!-- Modal -->
-<div class="modal fade" id="AddModal" tabindex="-1" role="dialog" aria-labelledby="AddModalLabel" data-backdrop="false" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable" role="document">
+<div id="warning-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="AddModalLabel">Add Employee</h5>
-        <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="modal-header modal-colored-header bg-warning">
+        <h4 class="modal-title" id="warning-header-modalLabel">Add Employee
+        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
         <form role="form text-left" method="post" action="{{ route('employee.store') }}" enctype="multipart/form-data">
@@ -85,6 +88,59 @@
     </div>
   </div>
 </div>
+<<<<<<< HEAD
+<!-- End Modal Add Employee -->
+<br>
+<br>
+<!-- Table Employee -->
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Employee Table</h4>
+        <div class="table-responsive">
+          <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Avatar</th>
+                <th>Departemen</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($data_employee as $employee)
+              <tr>
+                <td>{{$employee->email}}</td>
+                <td>{{$employee->name}}</td>
+                <td>{{$employee->address}}</td>
+                <td>{{$employee->phone}}</td>
+                <td>
+                  @if($employee->avatar)
+                  <img src="{{ asset('avatar/'.$employee->avatar) }}" class="avatar" alt="avatar">
+                  @else
+                  <img src="{{ asset('avatar/user.png') }}" class="avatar" alt="avatar">
+                  @endif
+                </td>
+                <td>{{$employee->dept_name}}</td>
+                <td>
+                  <a class="btn btn-warning waves-effect waves-light" 
+                  type="button" href="{{ url('employee/edit/{employee}') }}">
+                    <span class="btn-label"><i class=" far fa-edit"></i></span>
+                    Mail</a>
+                    <a class="btn btn-danger waves-effect waves-light" 
+                  type="button" href="{{ url('employee/delete/{employee}') }}">
+                    <span class="btn-label"><i class="fas fa-trash-alt"></i></span>
+                    Mail</a>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
+=======
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-12">
@@ -140,37 +196,6 @@
       </div>
     </div>
   </div>
-  <footer class="footer pt-3  ">
-    <div class="container-fluid">
-      <div class="row align-items-center justify-content-lg-between">
-        <div class="col-lg-6 mb-lg-0 mb-4">
-          <div class="copyright text-center text-sm text-muted text-lg-start">
-            © <script>
-              document.write(new Date().getFullYear())
-            </script>,
-            made with <i class="fa fa-heart"></i> by
-            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-            for a better web.
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </footer>
 </div>
+<!-- End Table Employee -->
 @endsection
