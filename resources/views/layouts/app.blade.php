@@ -17,6 +17,8 @@
     <link href="{{ asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
     <!-- Custom CSS -->
     <link href="{{ asset('dist/css/style.min.css')}}" rel="stylesheet">
+
+    <link href="{{ asset('dist/css/style.css')}}" rel="stylesheet">
     <!-- CSS DataTable -->
     <!-- CSS dataTable -->
     <link href="{{ asset('assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css')}}" rel="stylesheet">
@@ -63,15 +65,15 @@
                                 <!-- Dark Logo icon -->
                                 <img src="{{ asset('assets/images/logo.png')}}" width="60" height="80" style="margin-left:50px; margin-top:20px;"  alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="{{ asset('assets/images/logo.png')}}" width="60" height="80"  alt="homepage" class="light-logo" />
+                                {{-- <img src="{{ asset('assets/images/logo.png')}}" width="60" height="80"  alt="homepage" class="light-logo" /> --}}
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
                             {{-- <span class="logo-text"> --}}
                                 <!-- dark Logo text -->
-                                {{-- <img src="{{ asset('assets/images/logo-text.png')}}" alt="homepage" class="dark-logo" /> --}}
+                                {{-- <img src="{{ asset('assets/images/logo.png')}}" width="60" height="80"  alt="homepage" class="dark-logo" /> --}}
                                 <!-- Light Logo text -->
-                                {{-- <img src="{{ asset('assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" /> --}}
+                                {{-- <img src="{{ asset('assets/images/logo.png')}}"  class="light-logo" alt="homepage" /> --}}
                             </span>
                         </a>
                     </div>
@@ -161,17 +163,29 @@
                         <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
 
                         <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/employee') }}"
-                                aria-expanded="false"><i data-feather="tag" class="feather-icon"></i><span
+                                aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
                                     class="hide-menu">Employee
                                 </span></a>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-chat.html"
-                                aria-expanded="false"><i data-feather="message-square" class="feather-icon"></i><span
-                                    class="hide-menu">Chat</span></a></li>
+                                aria-expanded="false"><i data-feather="globe" class="feather-icon"></i><span
+                                    class="hide-menu">Departement</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
-                                aria-expanded="false"><i data-feather="calendar" class="feather-icon"></i><span
-                                    class="hide-menu">Calendar</span></a></li>
-
+                                aria-expanded="false"><i data-feather="menu" class="feather-icon"></i><span
+                                    class="hide-menu">Category</span></a></li>
+                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
+                                aria-expanded="false"><i data-feather="menu" class="feather-icon"></i><span
+                                class="hide-menu">Complaint</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
+                                    aria-expanded="false"><i data-feather=inbox" class="feather-icon"></i><span
+                                        class="hide-menu">Product</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="app-calendar.html"
+                                            aria-expanded="false"><i data-feather="menu" class="feather-icon"></i><span
+                                                class="hide-menu">Memo</span></a></li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="app-calendar.html"
+                                              aria-expanded="false"><i data-feather="menu" class="feather-icon"></i><span
+                                                        class="hide-menu">Meeting</span></a></li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Components</span></li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow" href="javascript:void(0)"
