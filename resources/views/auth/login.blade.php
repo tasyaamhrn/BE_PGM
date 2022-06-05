@@ -1,101 +1,103 @@
-<!--
-=========================================================
-* Soft UI Dashboard - v1.0.5
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.png')}}">
-  <title>
-    Soft UI Dashboard by Creative Tim
-  </title>
-  <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <!-- Nucleo Icons -->
-  <link href="{{asset('assets/css/nucleo-icons.css')}}" rel="stylesheet" />
-  <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
-  <!-- Font Awesome Icons -->
-  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-  <link href="{{asset('assets/css/nucleo-svg.css')}}" rel="stylesheet" />
-  <!-- CSS Files -->
-  <link id="pagestyle" href="{{asset('assets/css/soft-ui-dashboard.css?v=1.0.5')}}" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/logo.png')}}">
+    <title>Service Automotion</title>
+    <!-- Custom CSS -->
+    <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+    <link href="{{asset('dist/css/style.css')}}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
 
-<body class="">
-  <main class="main-content  mt-0">
-    <section>
-      <div class="page-header min-vh-75">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto">
-              <div class="card card-plain mt-7">
-                <div class="card-header pb-0 text-left bg-transparent">
-                  <h3 class="font-weight-bolder text-info text-gradient">Welcome back</h3>
-                  <p class="mb-0">Enter your email and password to sign in</p>
-                </div>
-                <div class="card-body">
-                  <form role="form">
-                    <label>Email</label>
-                    <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
-                    </div>
-                    <label>Password</label>
-                    <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
-                    </div>
-                    <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
-                      <label class="form-check-label" for="rememberMe">Remember me</label>
-                    </div>
-                    <div class="text-center">
-                      <button type="button" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
+<body>
+    <div class="main-wrapper">
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <div class="preloader">
+            <div class="lds-ripple">
+                <div class="lds-pos"></div>
+                <div class="lds-pos"></div>
             </div>
-            <div class="col-md-6">
-              <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('assets/img/curved-images/perumahan.jpg')"></div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
-  </main>
-  <!--   Core JS Files   -->
-  <script src="{{asset('assets/js/core/popper.min.js')}}"></script>
-  <script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
-  <script src="{{asset('assets/js/plugins/perfect-scrollbar.min.js')}}"></script>
-  <script src="{{asset('assets/js/plugins/smooth-scrollbar.min.js')}}"></script>
-  <script>
-    var win = navigator.platform.indexOf('Win') > -1;
-    if (win && document.querySelector('#sidenav-scrollbar')) {
-      var options = {
-        damping: '0.5'
-      }
-      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
-    }
-  </script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{asset('assets/js/soft-ui-dashboard.min.js?v=1.0.5')}}"></script>
+        <!-- ============================================================== -->
+        <!-- Preloader - style you can find in spinners.css -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Login box.scss -->
+        <!-- ============================================================== -->
+        <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
+            style="background-color:#F0F5F9;">
+            {{-- <div class="auth-box row"> --}}
+                {{-- <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url(../assets/images/big/gambarr.jpg;">
+                </div> --}}
+
+                <div class="col-lg-4 col-md-8 bg-white" style="border:1px solid transparant; border-radius: 20px;">
+                    <div class="p-3">
+                        <div class="text-center">
+                            <img src="{{asset('assets/images/logo.png')}}" height="80" width="60" alt="wrapkit">
+                        </div>
+                        <h2 class="mt-3 text-center" style="color:#EB6123;"><b>Welcome Back</b></h2>
+                        <p class="text-center">Enter your email address and password to Sign in.</p>
+                        <form class="mt-4">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="text-dark" for="uname">Email</label>
+                                        <input class="form-control" id="uname" type="text"
+                                            placeholder="enter your email">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label class="text-dark" for="pwd">Password</label>
+                                        <input class="form-control" id="pwd" type="password"
+                                            placeholder="enter your password">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 text-center">
+                                    <button type="submit" class="btn btn-block" style="background-color:#EB6123; color:#fff;">Sign in</button>
+                                </div>
+                                <div class="col-lg-12 text-center mt-5">
+                                    {{-- Don't have an account? <a href="#" class="text-danger">Sign Up</a> --}}
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {{-- </div> --}}
+        </div>
+        <!-- ============================================================== -->
+        <!-- Login box.scss -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+    <script src="{{asset('assets/libs/jquery/dist/jquery.min.js')}} "></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{asset('assets/libs/popper.js/dist/umd/popper.min.js')}} "></script>
+    <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}} "></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script>
+        $(".preloader ").fadeOut();
+    </script>
 </body>
 
 </html>

@@ -7790,9 +7790,11 @@ Preloader
         padding: 0 30px 0 30px;
         height: 80px; }
         .topbar .top-navbar .navbar-header .navbar-brand .dark-logo {
-          display: none; }
+          display: none;
+          position: relative;}
         .topbar .top-navbar .navbar-header .navbar-brand .logo-icon {
-          margin-right: 5px; }
+          margin-right: 5px;
+          position: relative; }
     .topbar .top-navbar .navbar-nav > .nav-item > .nav-link {
       padding: 0px 15px;
       font-size: 1rem;
