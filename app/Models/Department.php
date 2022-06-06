@@ -6,15 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class history_memo extends Model
+class Department extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'memo_id',
-        'catatan',
-        'bukti'
-    ];
+    protected $fillable = ['name'];
     public $incrementing = false;
 
     protected $keyType = 'string';
@@ -26,7 +22,12 @@ class history_memo extends Model
             $issue->id = Str::uuid(36);
         });
     }
-    public function memo(){
-        return $this->belongsTo(Memo::class);
+
+    public function employee(){
+        return $this->hasMany(Employee::class,'dept_id','id');
+    }
+    public function category()
+    {
+        return $this->hasMany(Category::class,'dept_id','id');
     }
 }
