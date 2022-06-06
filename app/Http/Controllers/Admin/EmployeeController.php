@@ -57,7 +57,7 @@ class EmployeeController extends Controller
 
     public function index()
     {
-        $data_employee = DB::select("SELECT email,name,address,phone,avatar,dept_name FROM users
+        $data_employee = DB::select("SELECT users.id,email,name,address,phone,avatar,dept_name FROM users
             LEFT JOIN (SELECT employees.*, departemens.name AS dept_name FROM employees
             INNER JOIN departemens ON employees.dept_id=departemens.id) employees ON employees.user_id=users.id
             WHERE users.role='EMPLOYEE'");
