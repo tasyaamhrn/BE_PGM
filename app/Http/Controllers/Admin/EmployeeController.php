@@ -65,17 +65,42 @@ class EmployeeController extends Controller
         return view('employee.index', compact('data_employee', 'data_departemen'));
     }
 
-    public function update(Request $request, Employee $employee){
-
+    public function update(Request $request, $id){
+        $request->validate([
+            'email' => 'required|email|max:191|unique:users,email',
+            'password' => 'required|string',
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'phone' => 'required|string',
+            'dept_id' => 'required|integer',
+        ]);
+        if ($request->avatar) {
+            $avatar = $request->file('avatar');
+            $avatarName = $avatar->getClientOriginalName();
+            $getExt = $avatar->getClientOriginalExtension();
+            $fileName = "AVA" . date('YdmYdmYhis') . "." . $getExt;
+            $avatar->move('avatar/', $fileName);
+            $file = $fileName;
+        } else {
+            $file = null;
+        }
+        $employee = Employee::find($id);
+        $employee->name = $request['name'];
+        $employee->address = $request['address'];
+        $employee->phone = $request['phone'];
+        $employee->dept_id = $request['dept_id'];
+        $employee->save();
+        $user = User::find($employee->user_id);
+        $user->email = $request['email'];
+        $user->password = $request['password'];
+        $user->save();
+        return redirect()->back();
     }
     public function destroy($id){
-        $employee = Employee::find($id);
-        if($employee)
-        {
-            $employee->delete();
-            return response()->json(['message'=>'Employee Deleted Sucessfully'], 200);
-        }else{
-            return response()->json(['message'=>'Employee Not Found'], 404);
-        }
+        $user = User::find($id);
+        $employee = Employee::all();
+        $user->employee()->where('user_id', $id)->delete();
+        $user->delete();
+        return redirect()->back();
     }
 }
