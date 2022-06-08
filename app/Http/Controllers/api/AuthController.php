@@ -45,6 +45,7 @@ class AuthController extends Controller
             ], 400);
         }
     }
+
     public function loginAdmin(Request $request)
     {
         try {
@@ -78,6 +79,16 @@ class AuthController extends Controller
                 'message' => "Authentication Failed " . $error
             ]);
         }
+    }
+    public function logout () {
+        $user = request()->user(); //or Auth::user()
+        // Revoke current user token
+        $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Logout Berhasil',
+
+        ],200);
     }
 
 }
