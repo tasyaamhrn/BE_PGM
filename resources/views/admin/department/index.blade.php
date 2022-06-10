@@ -49,31 +49,16 @@
               <input type="text" class="form-control" name="name" placeholder="Name">
             </div>
           </div>
-
           <div class="form-group">
             <label for="message-text" class="col-form-label">Address</label>
             <div>
               <textarea class="form-control" name="address"></textarea>
             </div>
           </div>
-
           <div class="form-group">
             <label for="message-text" class="col-form-label">Phone</label>
             <div>
               <input type="text" class="form-control" name="phone" placeholder="Phone">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Departemen</label>
-            <div>
-              <select name='dept_id' class='form-control'>
-                @foreach($department as $dept)
-                <option hidden value="">
-                  <center>-- Pilih --</center>
-                </option>
-                <option value="{{$dept->id}}">{{$dept->name}}</option>
-                @endforeach
-              </select>
             </div>
           </div>
           <div class="form-group">
@@ -120,18 +105,28 @@
       <div class="modal-body">
         <form id="editform" role="form text-left" method="post" action="{{ route('employee.update', '$employee->id') }}" enctype="multipart/form-data">
           {{csrf_field()}}
-          {{ method_field('PUT') }}
-
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Name</label>
+            <label for="recipient-name" class="col-form-label">Email</label>
             <div>
-              <input type="text" class="form-control" name="name" id="name"  value="">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email">
             </div>
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label" >Address</label>
+            <label for="message-text" class="col-form-label">Password</label>
             <div>
-              <textarea class="form-control" name="address" id="address" value=""></textarea>
+              <input type="password" class="form-control" name="password" id="passworrd" passplaceholder="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Name</label>
+            <div>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Address</label>
+            <div>
+              <textarea class="form-control" name="address" id="address"></textarea>
             </div>
           </div>
           <div class="form-group">
@@ -147,11 +142,11 @@
               <label><b>*Jika tidak ada kosongkan saja</b></label>
             </div>
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="message-text" class="col-form-label">Departemen</label>
             <div>
               <select name='dept_id' id="dept_id" class='form-control'>
-                @foreach($department as $dept)
+                @foreach($data_departemen as $dept)
                 <option hidden value="">
                   <center>-- Pilih --</center>
                 </option>
@@ -159,7 +154,7 @@
                 @endforeach
               </select>
             </div>
-          </div>
+          </div> --}}
           <div class="form-group text-center">
             <button id="btn" type="submit" class="btn btn-block">Submit</button>
           </div>
@@ -176,52 +171,32 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Employee Table</h4>
+        <h4 class="card-title">Departemen Table</h4>
 
         <div class="table-responsive">
           <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
             <thead>
               <tr>
-                <th>Email</th>
                 <th>Name</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Avatar</th>
-                <th>Departemen</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($employee as $e)
-
-
-
+              @foreach($department as $d)
               <tr>
-                <td>{{$e->user->email}}</td>
-                <td>{{$e->name}}</td>
-                <td>{{$e->address}}</td>
-                <td>{{$e->phone}}</td>
-                <td><img src="{{ url('storage').'/'.$e->avatar }}" height="40px" width="40px" />
-                <td>
-                    {{$e->department->name}}
-                </td>
+                <td>{{$d->name}}</td>
 
                 <td>
-                    <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" href="#">
+                <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" href="#">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
-                  <form method="post" action="{{url('employee/delete/'.$e->user_id)}}">
-                    @method('DELETE')
+                  <form method="post" action="{{ route('employee.destroy', $d->id) }}">
                     @csrf
-                    @if (Auth::user()->role_id == 1)
                     <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
-                        <i class="fa fa-trash"></i></button>
-                    @endif
-
+                      <i class="fa fa-trash"></i></button>
                   </form>
                 </td>
               </tr>
-
               @endforeach
             </tbody>
           </table>
