@@ -34,7 +34,7 @@ class DepartmentController extends Controller
         Department::create([
             'name' => $request->name,
         ]);
-        return redirect('/pertamina/list-spbu');
+        return redirect('/department');
     }
     public function destroy($id){
         $department = Department::findOrFail($id);
