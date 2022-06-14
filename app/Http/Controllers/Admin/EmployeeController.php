@@ -76,34 +76,27 @@ class EmployeeController extends Controller
 
 
     public function update(Request $request, $id){
+        // dd($request->all());
         $request->validate([
             'email' => 'required|email|max:191|unique:users,email',
-            'password' => 'required|string',
             'name' => 'required|string',
             'address' => 'required|string',
             'phone' => 'required|string',
             'dept_id' => 'required|integer',
         ]);
-        if ($request->avatar) {
-            $avatar = $request->file('avatar');
-            $avatarName = $avatar->getClientOriginalName();
-            $getExt = $avatar->getClientOriginalExtension();
-            $fileName = "AVA" . date('YdmYdmYhis') . "." . $getExt;
-            $avatar->move('avatar/', $fileName);
-            $file = $fileName;
+        if ($request->avatar instanceof UploadedFile) {
+            $avatar = $request->avatar->store('avatar', 'public');
+            $user = User::find($id);
+            $user->email = $request['email'];
+            $user->save();
+            
         } else {
-            $file = null;
+            $user = User::find($id);
+            $user->email = $request['email'];
+            $user->save();
+            
         }
-        $employee = Employee::find($id);
-        $employee->name = $request['name'];
-        $employee->address = $request['address'];
-        $employee->phone = $request['phone'];
-        $employee->dept_id = $request['dept_id'];
-        $employee->save();
-        $user = User::find($employee->user_id);
-        $user->email = $request['email'];
-        $user->password = $request['password'];
-        $user->save();
+        
         return redirect()->back();
     }
     public function delete($user_id)
