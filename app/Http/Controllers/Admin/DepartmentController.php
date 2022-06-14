@@ -36,4 +36,9 @@ class DepartmentController extends Controller
         ]);
         return redirect('/pertamina/list-spbu');
     }
+    public function destroy($id){
+        $department = Department::findOrFail($id);
+        $department->delete();
+        return redirect('/department');
+    }
 }

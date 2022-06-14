@@ -217,7 +217,7 @@
                               <label><b>*Jika tidak ada kosongkan saja</b></label>
                             </div>
                           </div>
-                          
+
                     <div class="form-group text-center">
                       <button id="btn" type="submit" class="btn btn-block">Submit</button>
                     </div>

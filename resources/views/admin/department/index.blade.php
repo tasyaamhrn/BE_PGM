@@ -190,7 +190,8 @@
                 <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" href="#">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
-                  <form method="post" action="{{ route('employee.destroy', $d->id) }}">
+                  <form method="post" action="{{ route('department.destroy', $d->id) }}">
+                    @method('DELETE')
                     @csrf
                     <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
                       <i class="fa fa-trash"></i></button>
