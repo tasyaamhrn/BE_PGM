@@ -76,7 +76,7 @@ class EmployeeController extends Controller
 
 
     public function update(Request $request, $id){
-        // dd($request->all());
+        dd($request->all());
         $request->validate([
             'email' => 'required|email|max:191|unique:users,email',
             'name' => 'required|string',
