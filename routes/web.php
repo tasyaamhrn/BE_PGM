@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::put('department/edit/{id}',[DepartmentController::class,'update'])->name('department.update');
     Route::delete('/department/{id}',[DepartmentController::class,'destroy'])->name('department.destroy');
     Route::put('employee/edit/{id}',[EmployeeController::class,'update'])->name('employee.update');
+    Route::GET('/categories',[CategoriesController::class,'index']);
     Route::post('/employee/{id}',[EmployeeController::class,'destroy'])->name('employee.destroy');
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

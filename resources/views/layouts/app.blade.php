@@ -172,7 +172,7 @@
                                     class="hide-menu">Departemen
                                 </span></a>
                         </li>
-                        <li class="sidebar-item" > <a class="sidebar-link" href="#"
+                        <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/categories') }}"
                                 aria-expanded="false"><i data-feather="menu" class="feather-icon"></i><span
                                     class="hide-menu">Category
                                 </span></a>
