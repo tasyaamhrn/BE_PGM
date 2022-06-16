@@ -29,13 +29,7 @@ class CustomerController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
         ];
-        $avatar = null;
-        if ($request->avatar instanceof UploadedFile) {
-            $avatar = $request->avatar->store('avatar', 'public');
-            $data['avatar'] = $avatar;
-        }else{
-            unset($data['avatar']);
-        }
+
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
@@ -45,15 +39,33 @@ class CustomerController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => 3
         ]);
-        $customer = Customer::create([
-            'user_id' => $register->id,
-            'nik' => $request->nik,
-            'name' => $request->name,
-            'address' => $request->address,
-            'avatar' => $avatar,
-            'phone' => $request->phone,
+        if ($request->avatar){
+            $file =$request->file('avatar');
+            $ext=$file->getClientOriginalExtension();
+            $name='avatar/'.date('dmYhis').".".$ext;
+            $file->move('avatar/',$name);
 
-        ]);
+            $customer = Customer::create([
+                'user_id' => $register->id,
+                'nik' => $request->nik,
+                'name' => $request->name,
+                'address' => $request->address,
+                'avatar' => $name,
+                'phone' => $request->phone,
+
+            ]);
+        }else{
+            $customer = Customer::create([
+                'user_id' => $register->id,
+                'nik' => $request->nik,
+                'name' => $request->name,
+                'address' => $request->address,
+                'phone' => $request->phone,
+
+            ]);
+        }
+
+
         if ($register) {
             return response()->json([
                 'success' =>true,

@@ -85,4 +85,12 @@ class CustomerController extends Controller
         ]);}
         return redirect('/customer');
     }
+    public function delete($user_id)
+    {
+        $user = User::findOrFail($user_id);
+        // dd($user, $user->employee) ;
+        $user->customer->delete();
+        $user->delete();
+        return redirect('/customer');
+    }
 }

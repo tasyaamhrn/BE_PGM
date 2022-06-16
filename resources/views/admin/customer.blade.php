@@ -137,7 +137,7 @@
                   <button id="edit" type="button" class="btn btn-circle btn-lg btn-warning edit" data-toggle="modal" data-target="#editModal-{{$c->user_id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </button>
-                  <form method="post" action="{{url('employee/delete/'.$c->user_id)}}">
+                  <form method="post" action="{{url('customer/delete/'.$c->user_id)}}">
                     @method('DELETE')
                     @csrf
                     @if (Auth::user()->role_id == 1)
