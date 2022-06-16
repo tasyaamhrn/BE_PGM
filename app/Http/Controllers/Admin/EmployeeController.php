@@ -29,12 +29,7 @@ class EmployeeController extends Controller
             'dept_id' => ['required'],
         ];
         $avatar = null;
-        if ($request->avatar instanceof UploadedFile) {
-            $avatar = $request->avatar->store('avatar', 'public');
-            $data['avatar'] = $avatar;
-        }else{
-            unset($data['avatar']);
-        }
+
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
@@ -44,15 +39,30 @@ class EmployeeController extends Controller
             'password' => Hash::make($request->password),
             'role_id' => 2
         ]);
-        $employee = Employee::create([
+        if ($request->avatar){
+            $file =$request->file('avatar');
+            $ext=$file->getClientOriginalExtension();
+            $name='avatar/'.date('dmYhis').".".$ext;
+            $file->move('avatar/',$name);
+            $employee = Employee::create([
+                'name' => $request->name,
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'dept_id' => $request->dept_id,
+                'user_id' => $register->id,
+                'avatar' => $name,
+
+            ]);
+            // $employee->avatar=$name;
+        }
+        else{$employee = Employee::create([
             'name' => $request->name,
             'address' => $request->address,
             'phone' => $request->phone,
             'dept_id' => $request->dept_id,
             'user_id' => $register->id,
-            'avatar' => $avatar,
-
-        ]);
+            // 'avatar' => $avatar,
+        ]);}
         return redirect('/employee');
     }
 
@@ -70,7 +80,7 @@ class EmployeeController extends Controller
             $employee_name = Employee::where('user_id', $logged_in)->select('name')->get();
             $name = $employee_name[0]->name;
         }
-        return view('employee.index', compact('employee', 'department', 'name'));
+        return view('admin.employee', compact('employee', 'department', 'name'));
 
     }
 
@@ -82,7 +92,7 @@ class EmployeeController extends Controller
         // $user1=User::find($employee->user_id)->update(
         //     [
         //         'email'=> $request->email
-                
+
         //     ]
         // );
         if ($request->avatar){
@@ -98,7 +108,7 @@ class EmployeeController extends Controller
         $employee->phone=$request->phone;
         $employee->dept_id=$request->dept_id;
         if($user->save() && $employee->save()){
-            return "berehasil";
+            return redirect('/employee');
         }
 
         dd($request->all());
@@ -114,15 +124,15 @@ class EmployeeController extends Controller
         //     $user = User::find($id);
         //     $user->email = $request['email'];
         //     $user->save();
-            
+
         // } else {
         //     $user = User::find($id);
         //     dd($user);
         //     $user->email = $request['email'];
         //     $user->save();
-            
+
         // }
-        
+
         return redirect()->back();
     }
     public function delete($user_id)
