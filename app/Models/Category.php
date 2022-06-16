@@ -29,6 +29,6 @@ class Category extends Model
      }
 
      public function departmen(){
-        return $this->belongsTo(Department::class);
+        return $this->belongsTo(Department::class,'dept_id');
     }
 }

@@ -16,25 +16,38 @@
 </div>
 @endsection
 <!-- End Page -->
-<!-- Modal Add Department -->
+<!-- Modal Add Employee -->
 <!-- Button Modal-->
-<button type="button" id="add" class=" btn btn-rounded" data-toggle="modal" data-target="#warning-header-modal">Add Department</button>
+<button type="button" id="add" class=" btn btn-rounded" data-toggle="modal" data-target="#warning-header-modal">Add Employee</button>
 <!-- End Button Modal -->
 <div id="warning-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div id="modals" class="modal-header modal-colored-header ">
-        <h4 class="modal-title" id="warning-header-modalLabel">Add Category
+        <h4 class="modal-title" id="warning-header-modalLabel">Add Employee
         </h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
-        <form role="form text-left" method="post" action="{{ route('department.store') }}" enctype="multipart/form-data">
+        <form role="form text-left" method="post" action="{{ route('category.store') }}" enctype="multipart/form-data">
           {{csrf_field()}}
           <div class="form-group">
             <label for="message-text" class="col-form-label">Name</label>
             <div>
               <input type="text" class="form-control" name="name" placeholder="Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Departemen</label>
+            <div>
+              <select name='dept_id' class='form-control'>
+                @foreach($department as $dept)
+                <option hidden value="">
+                  <center>-- Pilih --</center>
+                </option>
+                <option value="{{$dept->id}}">{{$dept->name}}</option>
+                @endforeach
+              </select>
             </div>
           </div>
           <div class="form-group text-center">
@@ -46,12 +59,6 @@
   </div><!-- /.modal-dialog -->
 </div>
 <!-- End Modal Add Employee -->
-
-
-
-<!-- Edit Modal -->
-
-<!-- End Edit Modal -->
 <br>
 <br>
 <!-- Table Employee -->
@@ -59,7 +66,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Categories Table</h4>
+        <h4 class="card-title">Category Table</h4>
 
         <div class="table-responsive">
           <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
@@ -74,52 +81,72 @@
               @foreach($category as $c)
               <tr>
                 <td>{{$c->name}}</td>
-                <td>{{$c->department->name}}</td>
                 <td>
-                {{-- <a type="button" class="btn btn-circle btn-lg btn-warning edit"  data-toggle="modal" data-target="#editModal-{{$d->id }}">
+                  {{$c->departmen->name}}
+                  <!-- @foreach ($department as $dep)
+                  @if($dep->id == $c->dept_id)
+                  {{$dep->name}}
+                  @endif
+                  @endforeach -->
+                  
+                </td>
+                <td>
+                  <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$c->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
-                  <form method="post" action="{{ route('department.destroy', $d->id) }}">
+                  <form method="post" action="{{ route('category.destroy', $c->id) }}">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
                       <i class="fa fa-trash"></i></button>
-                  </form> --}}
+                  </form>
                 </td>
               </tr>
-              {{-- <div class="modal fade" id="editModal-{{$d->id }}">
-                <div class="modal-dialog modal-lg">
+              <!-- Modal Edit -->
+              <div id="editModal{{$c->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Edit Data</h4>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+                    <div id="modals" class="modal-header modal-colored-header ">
+                      <h4 class="modal-title" id="warning-header-modalLabel">Edit Employee
+                      </h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                      <div class="widget">
-                        <div class="widget-content">
-                        <form role="form text-left" method="post" action="{{route ('department.update', $d->id)}}" enctype="multipart/form-data">
-                            {{csrf_field()}}
-                          @method ('PUT')
-
-                          <div class="form-group">
-                            <label for="message-text" class="col-form-label">Name</label>
-                            <div>
-                              <input type="text" class="form-control" name="name" placeholder="Name" value="{{$d->name}}">
-                            </div>
+                      <form role="form text-left" method="post" action="{{ route('category.update', $c->id) }}" enctype="multipart/form-data">
+                        {{csrf_field()}}
+                        {{method_field('PUT')}}
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Name</label>
+                          <div>
+                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{$c->name}}">
                           </div>
-
-                    <div class="form-group text-center">
-                      <button id="btn" type="submit" class="btn btn-block">Submit</button>
-                    </div>
-                    </form>
                         </div>
-                      </div>
+                        <div class="form-group">
+                          <label for="message-text" class="col-form-label">Departemen</label>
+                          <div>
+                            <select name='dept_id' class='form-control'>
+                              @foreach($department as $dept)
+                              @if($dept->id == $c->dept_id)
+                              <option hidden value="{{$dept->id}}">
+                                <center>
+                                {{$dept->name}}
+                                </center>
+                              </option>
+                              @endif
+                              <option value="{{$dept->id}}">{{$dept->name}}</option>
+                              @endforeach
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-group text-center">
+                          <button id="btn" type="submit" class="btn btn-block">Submit</button>
+                        </div>
+                      </form>
                     </div>
-                  </div>
-                </div>
-              </div> --}}
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div>
+              <!-- End Modal Edit -->
               @endforeach
             </tbody>
           </table>

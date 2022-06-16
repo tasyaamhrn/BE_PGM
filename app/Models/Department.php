@@ -28,6 +28,6 @@ class Department extends Model
     }
     public function category()
     {
-        return $this->hasMany(Category::class,'dept_id','id');
+        return $this->hasMany(Category::class,'dept_id');
     }
 }

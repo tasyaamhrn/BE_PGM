@@ -76,6 +76,31 @@ class EmployeeController extends Controller
 
 
     public function update(Request $request, $id){
+        $employee = Employee::with('user')->find($id);
+        $user=User::find($employee->user_id);
+        // bcrypt()
+        // $user1=User::find($employee->user_id)->update(
+        //     [
+        //         'email'=> $request->email
+                
+        //     ]
+        // );
+        if ($request->avatar){
+            $file =$request->file('avatar');
+            $ext=$file->getClientOriginalExtension();
+            $name='avatar/'.date('dmYhis').".".$ext;
+            $file->move('avatar/',$name);
+            $employee->avatar=$name;
+        }
+        $user->email=$request->email;
+        $employee->name=$request->name;
+        $employee->address=$request->address;
+        $employee->phone=$request->phone;
+        $employee->dept_id=$request->dept_id;
+        if($user->save() && $employee->save()){
+            return "berehasil";
+        }
+
         dd($request->all());
         $request->validate([
             'email' => 'required|email|max:191|unique:users,email',
@@ -84,18 +109,19 @@ class EmployeeController extends Controller
             'phone' => 'required|string',
             'dept_id' => 'required|integer',
         ]);
-        if ($request->avatar instanceof UploadedFile) {
+        // if ($request->avatar instanceof UploadedFile) {
             $avatar = $request->avatar->store('avatar', 'public');
-            $user = User::find($id);
-            $user->email = $request['email'];
-            $user->save();
+        //     $user = User::find($id);
+        //     $user->email = $request['email'];
+        //     $user->save();
             
-        } else {
-            $user = User::find($id);
-            $user->email = $request['email'];
-            $user->save();
+        // } else {
+        //     $user = User::find($id);
+        //     dd($user);
+        //     $user->email = $request['email'];
+        //     $user->save();
             
-        }
+        // }
         
         return redirect()->back();
     }

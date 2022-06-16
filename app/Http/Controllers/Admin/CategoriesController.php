@@ -16,7 +16,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $category = Category::all();
+        $category = Category::with('departmen')->get();
         $employee = Employee::get();
         $department = Department::all();
         $logged_in = Auth::id();
@@ -29,5 +29,32 @@ class CategoriesController extends Controller
         }
         return view('admin.category.index', compact('category','employee','department', 'name'));
 
+    }
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'dept_id' => 'required',
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+            'dept_id' => $request->dept_id,
+        ]);
+        return redirect('/categories');
+    }
+
+    public function update(Request $request, $id){
+        $category = Category::find($id);
+        $category->name = $request->input('name');
+        $category->dept_id = $request->input('dept_id');
+        $category->save();
+        return redirect('/categories');
+    }
+
+    public function destroy ($id){
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect('/categories');
     }
 }

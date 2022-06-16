@@ -135,7 +135,7 @@
                 <td>{{$e->name}}</td>
                 <td>{{$e->address}}</td>
                 <td>{{$e->phone}}</td>
-                <td><img src="{{ url('storage').'/'.$e->avatar }}" height="40px" width="40px" />
+                <td><img src="{{asset($e->avatar )}}" height="40px" width="40px" />
                 <td>
                   {{$e->department->name}}
                 </td>
@@ -168,9 +168,9 @@
                     <div class="modal-body">
                       <div class="widget">
                         <div class="widget-content">
-                        <form role="form text-left" method="post" action="{{url('employee/edit/'.$e->user_id)}}" enctype="multipart/form-data">
+                        <form role="form text-left" method="post" action="{{url('employee/edit/'.$e->id)}}" enctype="multipart/form-data">
                           {{csrf_field()}}
-                          @method ('PUT')
+                         
                           <div class="form-group">
                             <label for="recipient-name" class="col-form-label">Email</label>
                             <div>
