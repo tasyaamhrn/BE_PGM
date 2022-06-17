@@ -27,4 +27,23 @@ class MeetingController extends Controller
         return view('admin.meeting', compact('meeting','employee','department', 'name'));
 
     }
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'tanggal' => 'required',
+            'judul' => 'required',
+            'notulensi' => 'required',
+        ]);
+        $logged_in = Auth::id();
+        $employee_id = Employee::where('user_id', $logged_in)->select('id')->get();
+        $id = $employee_id[0]->id;
+        Meeting::create([
+            'tanggal' => $request->tanggal,
+            'judul' => $request->judul,
+            'notulensi' => $request->notulensi,
+            'employee_id' => $id,
+
+        ]);
+        return redirect('/meeting');
+    }
 }

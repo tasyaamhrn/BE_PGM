@@ -29,27 +29,33 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
-        <form role="form text-left" method="post" action="{{ route('category.store') }}" enctype="multipart/form-data">
+        <form role="form text-left" method="post" action="{{ route('meeting.store') }}" enctype="multipart/form-data">
           {{csrf_field()}}
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Name</label>
+            <label for="message-text" class="col-form-label">Tanggal</label>
             <div>
-              <input type="text" class="form-control" name="name" placeholder="Name">
+              <input type="date" class="form-control" name="tanggal" placeholder="tanggal">
             </div>
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Departemen</label>
+            <label for="message-text" class="col-form-label">Judul</label>
             <div>
-              <select name='dept_id' class='form-control'>
-                @foreach($department as $dept)
-                <option hidden value="">
-                  <center>-- Pilih --</center>
-                </option>
-                <option value="{{$dept->id}}">{{$dept->name}}</option>
-                @endforeach
-              </select>
+              <input type="text" class="form-control" name="judul" placeholder="Judul">
             </div>
           </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Notulensi</label>
+            <div>
+              <textarea class="form-control" name="notulensi"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Notulis</label>
+            <div>
+              <input type="text" class="form-control" name="notulis" value="{{$name}}">
+            </div>
+          </div>
+
           <div class="form-group text-center">
             <button id="btn" type="submit" class="btn btn-block">Submit</button>
           </div>

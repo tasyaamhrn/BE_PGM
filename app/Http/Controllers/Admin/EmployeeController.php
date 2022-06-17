@@ -86,7 +86,13 @@ class EmployeeController extends Controller
 
 
     public function update(Request $request, $id){
-
+        // $request->validate([
+        //         'email' => 'required|email|max:191|unique:users,email',
+        //         'name' => 'required|string',
+        //         'address' => 'required|string',
+        //         'phone' => 'required|string',
+        //         'dept_id' => 'required|integer',
+        //     ]);
         $employee = Employee::with('user')->find($id);
         $user=User::find($employee->user_id);
         if ($request->avatar){
