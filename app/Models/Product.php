@@ -17,7 +17,8 @@ class Product extends Model
         'price',
         'status',
         'tanah_lebih',
-        'discount'
+        'discount',
+        'image',
     ];
     public $incrementing = false;
 
