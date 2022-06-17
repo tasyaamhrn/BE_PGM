@@ -192,7 +192,7 @@
                                     class="hide-menu">Memo
                                 </span></a>
                         </li>
-                        <li class="sidebar-item" > <a class="sidebar-link" href="#"
+                        <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/meeting') }}"
                                 aria-expanded="false"><i data-feather="clipboard" class="feather-icon"></i><span
                                     class="hide-menu">Meeting
                                 </span></a>

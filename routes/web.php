@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\MeetingController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -51,6 +52,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('customer',[CustomerController::class,'store'])->name('customer.store');
     Route::delete('customer/delete/{user_id}',[CustomerController::class,'delete'])->name('customer.destroy');
     Route::post('customer/edit/{id}',[CustomerController::class,'update'])->name('customer.update');
+    Route::GET('/meeting',[MeetingController::class,'index']);
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
