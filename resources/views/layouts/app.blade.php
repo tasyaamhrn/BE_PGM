@@ -182,7 +182,7 @@
                                     class="hide-menu">Complaint
                                 </span></a>
                         </li>
-                        <li class="sidebar-item" > <a class="sidebar-link" href="#"
+                        <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/product') }}"
                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                                     class="hide-menu">Product
                                 </span></a>

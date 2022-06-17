@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\MeetingController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -56,6 +57,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('/meeting',[MeetingController::class,'store'])->name('meeting.store');
     Route::delete('/meeting/{id}',[MeetingController::class,'destroy'])->name('meeting.destroy');
     Route::put('meeting/edit/{id}',[MeetingController::class,'update'])->name('meeting.update');
+    Route::GET('/product',[ProductController::class,'index']);
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
