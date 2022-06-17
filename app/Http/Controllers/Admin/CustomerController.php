@@ -93,4 +93,5 @@ class CustomerController extends Controller
         $user->delete();
         return redirect('/customer');
     }
+
 }

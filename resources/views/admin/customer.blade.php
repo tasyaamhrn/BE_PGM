@@ -170,6 +170,12 @@
                             </div>
                           </div>
                           <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">NIK</label>
+                            <div>
+                              <input type="text" class="form-control" name="nik" placeholder="NIK" value="{{$c->nik}}">
+                            </div>
+                          </div>
+                          <div class="form-group">
                             <label for="message-text" class="col-form-label">Name</label>
                             <div>
                               <input type="text" class="form-control" name="name" placeholder="Name" value="{{$c->name}}">

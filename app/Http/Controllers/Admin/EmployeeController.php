@@ -86,6 +86,14 @@ class EmployeeController extends Controller
 
 
     public function update(Request $request, $id){
+        dd($request->all());
+        $request->validate([
+            'email' => 'required|email|max:191|unique:users,email',
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'phone' => 'required|string',
+            'dept_id' => 'required|integer',
+        ]);
         $employee = Employee::with('user')->find($id);
         $user=User::find($employee->user_id);
         // bcrypt()
@@ -111,16 +119,10 @@ class EmployeeController extends Controller
             return redirect('/employee');
         }
 
-        dd($request->all());
-        $request->validate([
-            'email' => 'required|email|max:191|unique:users,email',
-            'name' => 'required|string',
-            'address' => 'required|string',
-            'phone' => 'required|string',
-            'dept_id' => 'required|integer',
-        ]);
+
+
         // if ($request->avatar instanceof UploadedFile) {
-            $avatar = $request->avatar->store('avatar', 'public');
+            // $avatar = $request->avatar->store('avatar', 'public');
         //     $user = User::find($id);
         //     $user->email = $request['email'];
         //     $user->save();

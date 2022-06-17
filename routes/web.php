@@ -50,7 +50,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::GET('/customer',[CustomerController::class,'index']);
     Route::post('customer',[CustomerController::class,'store'])->name('customer.store');
     Route::delete('customer/delete/{user_id}',[CustomerController::class,'delete'])->name('customer.destroy');
-
+    Route::post('customer/edit/{id}',[CustomerController::class,'update'])->name('customer.update');
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
