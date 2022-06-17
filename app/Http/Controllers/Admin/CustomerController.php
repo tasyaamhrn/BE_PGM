@@ -93,5 +93,39 @@ class CustomerController extends Controller
         $user->delete();
         return redirect('/customer');
     }
+    public function update(Request $request, $id){
+        // $request->validate([
+        //     'email' => 'required|email|max:191|unique:users,email',
+        //     'name' => 'required|string',
+        //     'address' => 'required|string',
+        //     'phone' => 'required|string',
+        //     'dept_id' => 'required|integer',
+        // ]);
+
+        $customer = Customer::with('user')->find($id);
+        $user=User::find($customer->user_id);
+        if ($request->avatar){
+            $file =$request->file('avatar');
+            $ext=$file->getClientOriginalExtension();
+            $name='avatar/'.date('dmYhis').".".$ext;
+            $file->move('avatar/',$name);
+            $customer->avatar=$name;
+
+        }
+        $user->email=$request->email;
+        $customer->nik=$request->nik;
+        $customer->name=$request->name;
+        $customer->address=$request->address;
+        $customer->phone=$request->phone;
+
+        if($user->save() && $customer->save()){
+
+            return redirect('/customer');
+        }
+
+
+
+
+    }
 
 }

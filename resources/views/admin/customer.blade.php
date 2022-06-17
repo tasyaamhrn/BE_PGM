@@ -134,7 +134,7 @@
 
                 <td>
 
-                  <button id="edit" type="button" class="btn btn-circle btn-lg btn-warning edit" data-toggle="modal" data-target="#editModal-{{$c->user_id }}">
+                  <button id="edit" type="button" class="btn btn-circle btn-lg btn-warning edit" data-toggle="modal" data-target="#editModal-{{$c->id}}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </button>
                   <form method="post" action="{{url('customer/delete/'.$c->user_id)}}">
@@ -148,7 +148,7 @@
                   </form>
                 </td>
               </tr>
-              <div class="modal fade" id="editModal-{{$c->user_id }}">
+              <div class="modal fade" id="editModal-{{$c->id }}">
                 <div class="modal-dialog modal-lg">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -160,7 +160,7 @@
                     <div class="modal-body">
                       <div class="widget">
                         <div class="widget-content">
-                        <form role="form text-left" method="post" action="{{url('employee/edit/'.$c->id)}}" enctype="multipart/form-data">
+                        <form role="form text-left" method="post" action="{{url('customer/edit/'.$c->id)}}" enctype="multipart/form-data">
                           {{csrf_field()}}
 
                           <div class="form-group">
