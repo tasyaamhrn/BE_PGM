@@ -46,13 +46,13 @@
           <div class="form-group">
             <label for="message-text" class="col-form-label">Notulensi</label>
             <div>
-              <textarea class="form-control" name="notulensi"></textarea>
+              <textarea class="form-control" name="notulensi" placeholder="Notulensi"></textarea>
             </div>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Notulis</label>
             <div>
-              <input type="text" class="form-control" name="notulis" value="{{$name}}">
+              <input type="text" readonly="readonly" class="form-control" name="notulis" value="{{$name}}">
             </div>
           </div>
 
@@ -105,7 +105,7 @@
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$m->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
-                  <form method="post" action="{{ route('category.destroy', $m->id) }}">
+                  <form method="post" action="{{ route('meeting.destroy', $m->id) }}">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
@@ -118,37 +118,32 @@
                 <div class="modal-dialog modal-dialog-scrollable">
                   <div class="modal-content">
                     <div id="modals" class="modal-header modal-colored-header ">
-                      <h4 class="modal-title" id="warning-header-modalLabel">Edit Employee
+                      <h4 class="modal-title" id="warning-header-modalLabel">Edit Meeting
                       </h4>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                      <form role="form text-left" method="post" action="{{ route('category.update', $m->id) }}" enctype="multipart/form-data">
+                      <form role="form text-left" method="post" action="{{ route('meeting.update', $m->id) }}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{method_field('PUT')}}
                         <div class="form-group">
-                          <label for="message-text" class="col-form-label">Name</label>
+                          <label for="message-text" class="col-form-label">Tanggal</label>
                           <div>
-                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{$m->name}}">
+                            <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" value="{{$m->tanggal}}">
                           </div>
                         </div>
                         <div class="form-group">
-                          <label for="message-text" class="col-form-label">Departemen</label>
-                          {{-- <div>
-                            <select name='dept_id' class='form-control'>
-                              @foreach($department as $dept)
-                              @if($dept->id == $c->dept_id)
-                              <option hidden value="{{$dept->id}}">
-                                <center>
-                                {{$dept->name}}
-                                </center>
-                              </option>
-                              @endif
-                              <option value="{{$dept->id}}">{{$dept->name}}</option>
-                              @endforeach
-                            </select>
-                          </div> --}}
-                        </div>
+                            <label for="message-text" class="col-form-label">Judul</label>
+                            <div>
+                              <input type="text" class="form-control" name="judul" placeholder="Judul" value="{{$m->judul}}">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">Notulensi</label>
+                            <div>
+                              <input type="text" class="form-control" name="notulensi" placeholder="Notulensi" value="{{$m->notulensi}}">
+                            </div>
+                          </div>
                         <div class="form-group text-center">
                           <button id="btn" type="submit" class="btn btn-block">Submit</button>
                         </div>

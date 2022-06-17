@@ -46,4 +46,18 @@ class MeetingController extends Controller
         ]);
         return redirect('/meeting');
     }
+    public function destroy ($id){
+        $meeting = Meeting::findOrFail($id);
+        $meeting->delete();
+        return redirect('/meeting');
+    }
+    public function update(Request $request, $id){
+        $meeting = Meeting::find($id);
+        $meeting->tanggal = $request->input('tanggal');
+        $meeting->judul = $request->input('judul');
+        $meeting->notulensi = $request->input('notulensi');
+        $meeting->save();
+        return redirect('/meeting');
+    }
+
 }
