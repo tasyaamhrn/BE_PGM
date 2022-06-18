@@ -83,26 +83,14 @@
               <label><b>*Jika tidak ada kosongkan saja</b></label>
             </div>
           </div>
-          {{-- <div class="form-group">
-            <label for="message-text" class="col-form-label">Departemen</label>
-            <div>
-              <select name='dept_id' class='form-control'>
-                @foreach($data_departemen as $dept)
-                <option hidden value="">
-                  <center>-- Pilih --</center>
-                </option>
-                <option value="{{$dept->id}}">{{$dept->name}}</option>
-          @endforeach
-          </select>
+
+          <div class="form-group text-center">
+            <button id="btn" type="submit" class="btn btn-block">Submit</button>
+          </div>
+        </form>
       </div>
-    </div> --}}
-    <div class="form-group text-center">
-      <button id="btn" type="submit" class="btn btn-block">Submit</button>
-    </div>
-    </form>
-  </div>
-</div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div>
 <!-- End Modal Add Employee -->
 
@@ -168,60 +156,60 @@
                     <div class="modal-body">
                       <div class="widget">
                         <div class="widget-content">
-                        <form role="form text-left" method="post" action="{{url('employee/edit/'.$e->id)}}" enctype="multipart/form-data">
-                          {{csrf_field()}}
+                          <form role="form text-left" method="post" action="{{url('employee/edit/'.$e->id)}}" enctype="multipart/form-data">
+                            {{csrf_field()}}
 
-                          <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Email</label>
-                            <div>
-                              <input type="email" class="form-control" name="email" placeholder="Email" value="{{$e->user->email}}">
+                            <div class="form-group">
+                              <label for="recipient-name" class="col-form-label">Email</label>
+                              <div>
+                                <input type="email" class="form-control" name="email" placeholder="Email" value="{{$e->user->email}}">
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="message-text" class="col-form-label">Name</label>
-                            <div>
-                              <input type="text" class="form-control" name="name" placeholder="Name" value="{{$e->name}}">
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Name</label>
+                              <div>
+                                <input type="text" class="form-control" name="name" placeholder="Name" value="{{$e->name}}">
+                              </div>
                             </div>
-                          </div>
 
-                          <div class="form-group">
-                            <label for="message-text" class="col-form-label">Address</label>
-                            <div>
-                              <input class="form-control" name="address" value="{{$e->address}}">
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Address</label>
+                              <div>
+                                <input class="form-control" name="address" value="{{$e->address}}">
+                              </div>
                             </div>
-                          </div>
 
-                          <div class="form-group">
-                            <label for="message-text" class="col-form-label">Phone</label>
-                            <div>
-                              <input type="text" class="form-control" name="phone" placeholder="Phone" value="{{$e->phone}}">
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Phone</label>
+                              <div>
+                                <input type="text" class="form-control" name="phone" placeholder="Phone" value="{{$e->phone}}">
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="message-text" class="col-form-label">Departemen</label>
-                            <div>
-                              <select name='dept_id' class='form-control' >
-                                @foreach($department as $dept)
-                                <option hidden value="{{$e->department->id}}">
-                                  <center>{{$e->department->name}}</center>
-                                </option>
-                                <option value="{{$dept->id}}">{{$dept->name}}</option>
-                                @endforeach
-                              </select>
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Departemen</label>
+                              <div>
+                                <select name='dept_id' class='form-control'>
+                                  @foreach($department as $dept)
+                                  <option hidden value="{{$e->department->id}}">
+                                    <center>{{$e->department->name}}</center>
+                                  </option>
+                                  <option value="{{$dept->id}}">{{$dept->name}}</option>
+                                  @endforeach
+                                </select>
+                              </div>
                             </div>
-                          </div>
-                          <div class="form-group">
-                            <label for="message-text" class="col-form-label">Avatar</label>
-                            <div>
-                              <input type="file" class="form-control" name="avatar">
-                              <label><b>*Jika tidak ada kosongkan saja</b></label>
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Avatar</label>
+                              <div>
+                                <input type="file" class="form-control" name="avatar">
+                                <label><b>*Jika tidak ada kosongkan saja</b></label>
+                              </div>
                             </div>
-                          </div>
 
-                    <div class="form-group text-center">
-                      <button id="btn" type="submit" class="btn btn-block">Submit</button>
-                    </div>
-                    </form>
+                            <div class="form-group text-center">
+                              <button id="btn" type="submit" class="btn btn-block">Submit</button>
+                            </div>
+                          </form>
                         </div>
                       </div>
                     </div>

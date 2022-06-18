@@ -21,8 +21,7 @@
 <button type="button" id="add" class=" btn btn-rounded" data-toggle="modal" data-target="#warning-header-modal">Add
     Product</button>
 <!-- End Button Modal -->
-<div id="warning-header-modal" class="modal fade" tabindex="-1" role="dialog"
-    aria-labelledby="warning-header-modalLabel" aria-hidden="true">
+<div id="warning-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div id="modals" class="modal-header modal-colored-header ">
@@ -31,12 +30,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form role="form text-left" method="post" action="{{ route('product.store') }}"
-                    enctype="multipart/form-data">
+                <form role="form text-left" method="post" action="{{ route('product.store') }}" enctype="multipart/form-data">
                     {{csrf_field()}}
                     <div class="form-group">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Blok</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="blok">
                             <option selected>Choose...</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
@@ -70,11 +68,10 @@
                     </div>
                     <div class="form-group">
                         <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
-                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status">
                             <option selected>Choose...</option>
                             <option value="Available">Available</option>
                             <option value="Booked">Booked</option>
-
                         </select>
                     </div>
                     <div class="form-group">
@@ -86,16 +83,16 @@
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Discount</label>
                         <div>
-                          <input type="number" class="form-control" name="discount" placeholder="Discount">
+                            <input type="number" class="form-control" name="discount" placeholder="Discount">
                         </div>
-                      </div>
-                      <div class="form-group">
+                    </div>
+                    <div class="form-group">
                         <label for="message-text" class="col-form-label">Image</label>
                         <div>
-                          <input type="file" class="form-control" name="image">
-                          <label><b>*Jika tidak ada kosongkan saja</b></label>
+                            <input type="file" class="form-control" name="image">
+                            <label><b>*Jika tidak ada kosongkan saja</b></label>
                         </div>
-                      </div>
+                    </div>
                     <div class="form-group text-center">
                         <button id="btn" type="submit" class="btn btn-block">Submit</button>
                     </div>
@@ -115,8 +112,7 @@
                 <h4 class="card-title">Product Table</h4>
 
                 <div class="table-responsive">
-                    <table id="multi_col_order" class="table table-striped table-bordered display no-wrap"
-                        style="width:100%">
+                    <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
                         <thead>
                             <tr>
                                 <th>Blok</th>
@@ -143,65 +139,48 @@
                                 <td>{{$p->tanah_lebih}}</td>
                                 <td>{{$p->discount}}</td>
                                 <td><img src="{{asset($p->image )}}" height="40px" width="40px" />
-                                    {{-- <td>
-                  {{$c->departmen->name}}
-                                    <!-- @foreach ($department as $dep)
-                  @if($dep->id == $c->dept_id)
-                  {{$dep->name}}
-                  @endif
-                  @endforeach -->
 
-                                </td> --}}
                                 <td>
-                                    <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button"
-                                        data-toggle="modal" data-target="#editModal{{$p->id }}">
+                                    <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$p->id }}">
                                         <span class="btn-label"><i class="far fa-edit"></i></span>
                                     </a>
                                     <form method="post" action="{{ route('meeting.destroy', $p->id) }}">
                                         @method('DELETE')
                                         @csrf
-                                        <button class="btn btn-circle btn-lg btn-danger"
-                                            onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
+                                        <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
                                             <i class="fa fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>
                             <!-- Modal Edit -->
-                            <div id="editModal{{$p->id }}" class="modal fade" tabindex="-1" role="dialog"
-                                aria-labelledby="warning-header-modalLabel" aria-hidden="true">
+                            <div id="editModal{{$p->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div id="modals" class="modal-header modal-colored-header ">
                                             <h4 class="modal-title" id="warning-header-modalLabel">Edit Meeting
                                             </h4>
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-hidden="true">×</button>
+                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                         </div>
                                         <div class="modal-body">
-                                            <form role="form text-left" method="post"
-                                                action="{{ route('meeting.update', $p->id) }}"
-                                                enctype="multipart/form-data">
+                                            <form role="form text-left" method="post" action="{{ route('meeting.update', $p->id) }}" enctype="multipart/form-data">
                                                 {{csrf_field()}}
                                                 {{method_field('PUT')}}
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">Tanggal</label>
                                                     <div>
-                                                        <input type="date" class="form-control" name="tanggal"
-                                                            placeholder="Tanggal" value="{{$p->tanggal}}">
+                                                        <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" value="{{$p->tanggal}}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">Judul</label>
                                                     <div>
-                                                        <input type="text" class="form-control" name="judul"
-                                                            placeholder="Judul" value="{{$p->judul}}">
+                                                        <input type="text" class="form-control" name="judul" placeholder="Judul" value="{{$p->judul}}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">Notulensi</label>
                                                     <div>
-                                                        <input type="text" class="form-control" name="notulensi"
-                                                            placeholder="Notulensi" value="{{$p->notulensi}}">
+                                                        <input type="text" class="form-control" name="notulensi" placeholder="Notulensi" value="{{$p->notulensi}}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group text-center">

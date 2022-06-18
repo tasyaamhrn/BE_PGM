@@ -35,7 +35,8 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-        return $request;
+        // dd($request->all());
+        // return $request;
         $this->validate($request, [
             'blok' => 'required',
             'no_kavling' => 'required',
