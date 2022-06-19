@@ -59,6 +59,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::put('meeting/edit/{id}',[MeetingController::class,'update'])->name('meeting.update');
     Route::GET('/product',[ProductController::class,'index']);
     Route::post('product',[ProductController::class,'store'])->name('product.store');
+    Route::delete('/product/{id}',[ProductController::class,'destroy'])->name('product.destroy');
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

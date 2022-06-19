@@ -144,7 +144,7 @@
                                     <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$p->id }}">
                                         <span class="btn-label"><i class="far fa-edit"></i></span>
                                     </a>
-                                    <form method="post" action="{{ route('meeting.destroy', $p->id) }}">
+                                    <form method="post" action="{{ route('product.destroy', $p->id) }}">
                                         @method('DELETE')
                                         @csrf
                                         <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
