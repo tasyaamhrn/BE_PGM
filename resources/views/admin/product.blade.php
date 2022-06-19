@@ -157,32 +157,80 @@
                                 <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div id="modals" class="modal-header modal-colored-header ">
-                                            <h4 class="modal-title" id="warning-header-modalLabel">Edit Meeting
+                                            <h4 class="modal-title" id="warning-header-modalLabel">Edit Product
                                             </h4>
                                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                                         </div>
                                         <div class="modal-body">
-                                            <form role="form text-left" method="post" action="{{ route('meeting.update', $p->id) }}" enctype="multipart/form-data">
+                                            <form role="form text-left" method="post" action="{{ route('product.update', $p->id) }}" enctype="multipart/form-data">
                                                 {{csrf_field()}}
                                                 {{method_field('PUT')}}
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">Tanggal</label>
+                                                    {{-- <label for="message-text" class="col-form-label">Blok</label> --}}
                                                     <div>
-                                                        <input type="date" class="form-control" name="tanggal" placeholder="Tanggal" value="{{$p->tanggal}}">
+                                                        <label class="mr-sm-2" for="inlineFormCustomSelect">Blok</label>
+                                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="blok">
+                                                            <option selected>{{$p->blok}}</option>
+                                                            <option value="A">A</option>
+                                                            <option value="B">B</option>
+                                                            <option value="C">C</option>
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">No.Kavling</label>
+                                                    <div>
+                                                        <input type="text" class="form-control" name="no_kavling" placeholder="No.Kavling" value="{{$p->no_kavling}}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">Judul</label>
+                                                    <label for="message-text" class="col-form-label">Type</label>
                                                     <div>
-                                                        <input type="text" class="form-control" name="judul" placeholder="Judul" value="{{$p->judul}}">
+                                                        <input type="text" class="form-control" name="type" placeholder="Type" value="{{$p->type}}">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="message-text" class="col-form-label">Notulensi</label>
+                                                    <label for="message-text" class="col-form-label">Luas</label>
                                                     <div>
-                                                        <input type="text" class="form-control" name="notulensi" placeholder="Notulensi" value="{{$p->notulensi}}">
+                                                        <input type="text" class="form-control" name="luas_tanah" placeholder="Luas" value="{{$p->luas_tanah}}">
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Price</label>
+                                                    <div>
+                                                        <input type="text" class="form-control" name="price" placeholder="Price" value="{{$p->price}}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{-- <label for="message-text" class="col-form-label">Blok</label> --}}
+                                                    <div>
+                                                        <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
+                                                        <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status">
+                                                            <option selected>{{$p->status}}</option>
+                                                            <option value="Available">Available</option>
+                                                            <option value="Booked">Booked</option>
+                                                        </select>
+                                                    </div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Tanah Lebih</label>
+                                                    <div>
+                                                        <input type="text" class="form-control" name="tanah_lebih" placeholder="Tanah Lebih" value="{{$p->tanah_lebih}}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Discount</label>
+                                                    <div>
+                                                        <input type="text" class="form-control" name="discount" placeholder="Discount" value="{{$p->discount}}">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="message-text" class="col-form-label">Image</label>
+                                                    <div>
+                                                      <input type="file" class="form-control" name="image">
+                                                      <label><b>*Jika tidak ada kosongkan saja</b></label>
+                                                    </div>
+                                                  </div>
                                                 <div class="form-group text-center">
                                                     <button id="btn" type="submit" class="btn btn-block">Submit</button>
                                                 </div>

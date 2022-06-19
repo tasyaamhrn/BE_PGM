@@ -60,6 +60,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::GET('/product',[ProductController::class,'index']);
     Route::post('product',[ProductController::class,'store'])->name('product.store');
     Route::delete('/product/{id}',[ProductController::class,'destroy'])->name('product.destroy');
+    Route::put('product/edit/{id}',[ProductController::class,'update'])->name('product.update');
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

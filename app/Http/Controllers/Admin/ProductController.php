@@ -85,4 +85,31 @@ class ProductController extends Controller
         $product->delete();
         return redirect('/product');
     }
+    public function update(Request $request, $id){
+        $product=Product::find($id);
+        if ($request->image){
+            $file =$request->file('image');
+            $ext=$file->getClientOriginalExtension();
+            $name='image/'.date('dmYhis').".".$ext;
+            $file->move('image/',$name);
+            $product->image=$name;
+
+        }
+        $product->blok=$request->blok;
+        $product->no_kavling=$request->no_kavling;
+        $product->type=$request->type;
+        $product->luas_tanah=$request->luas_tanah;
+        $product->price=$request->price;
+        $product->status=$request->status;
+        $product->tanah_lebih=$request->tanah_lebih;
+        $product->discount=$request->discount;
+        if($product->save()){
+
+            return redirect('/product');
+        }
+
+
+
+
+    }
 }
