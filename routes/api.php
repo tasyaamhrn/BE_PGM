@@ -6,7 +6,7 @@ use App\Http\Controllers\api\DepartmentController;
 use App\Http\Controllers\api\EmployeeController;
 use App\Http\Controllers\Customer\AuthController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\api\ProductController;
 use App\Http\Controllers\CategoryController;
 
 use Illuminate\Http\Request;
@@ -42,6 +42,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('department/delete/{department}', [DepartmentController::class, 'delete']);
     Route::get('customer/{id}', [CustomerController::class, 'show']);
     Route::post('customer/edit/{customer}', [CustomerController::class, 'update']);
+    Route::get('product', [ProductController::class, 'index']);
 
 });
 
