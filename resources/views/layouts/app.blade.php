@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/logo.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/logosalog.png')}}">
     <title>Service Automotion</title>
     <!-- Custom CSS -->
     <link href="{{ asset('assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
@@ -62,9 +62,9 @@
                         <a href="index.html">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="{{ asset('assets/images/logo.png')}}" width="60" height="80" style="margin-left:50px; margin-top:20px;"  alt="homepage" class="dark-logo" />
+                                <img src="{{ asset('assets/images/logosa2.png')}}" width="100" height="110" style="margin-right:20px; margin-top:20px;"  alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="{{ asset('assets/images/logo.png')}}" width="60" height="80"  alt="homepage" class="light-logo" />
+                                <img src="{{ asset('assets/images/logosa2.png')}}" width="60" height="80"  alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
@@ -188,6 +188,11 @@
                                 </span></a>
                         </li>
                         <li class="sidebar-item" > <a class="sidebar-link" href="#"
+                            aria-expanded="false"><i data-feather="shopping-cart" class="feather-icon"></i><span
+                                class="hide-menu">Booking
+                            </span></a>
+                    </li>
+                        <li class="sidebar-item" > <a class="sidebar-link" href="#"
                                 aria-expanded="false"><i data-feather="file" class="feather-icon"></i><span
                                     class="hide-menu">Memo
                                 </span></a>
@@ -200,7 +205,7 @@
                              <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
 
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="authentication-login1.html"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{url('/logout')}}"
                                 aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
                                     class="hide-menu">Logout</span></a></li>
                     </ul>
