@@ -4,10 +4,9 @@ use App\Http\Controllers\api\AuthController as ApiAuthController;
 use App\Http\Controllers\api\CustomerController;
 use App\Http\Controllers\api\DepartmentController;
 use App\Http\Controllers\api\EmployeeController;
-use App\Http\Controllers\Customer\AuthController;
-use App\Http\Controllers\RoleController;
+
 use App\Http\Controllers\api\ProductController;
-use App\Http\Controllers\CategoryController;
+
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
