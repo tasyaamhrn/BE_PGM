@@ -24,7 +24,7 @@
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div id="modals" class="modal-header modal-colored-header ">
-        <h4 class="modal-title" id="warning-header-modalLabel">Add Employee
+        <h4 class="modal-title" id="warning-header-modalLabel">Add Category
         </h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
@@ -88,7 +88,7 @@
                   {{$dep->name}}
                   @endif
                   @endforeach -->
-                  
+
                 </td>
                 <td>
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$c->id }}">
