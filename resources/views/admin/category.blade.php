@@ -133,7 +133,7 @@
                                 </center>
                               </option>
                               @endif
-                              <option value="{{$dept->id}}">{{$dept->name}}</option>
+                              <option value="{{$dept->id}}" @if ($c->dept_id == $dept->id) selected @endif>{{$dept->name}}</option>
                               @endforeach
                             </select>
                           </div>
