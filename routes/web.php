@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\admin\ComplaintsController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\MeetingController;
 use App\Http\Controllers\Admin\ProductController;
@@ -38,6 +39,9 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => ['admin']], function () {
     Route::GET('/employee',[EmployeeController::class,'index']);
     Route::post('employee',[EmployeeController::class,'store'])->name('employee.store');
+
+    Route::post('employee/edit/{id}',[EmployeeController::class,'update'])->name('employee.update');
+
     Route::delete('employee/delete/{user_id}',[EmployeeController::class,'delete'])->name('employee.destroy');
     Route::GET('/department',[DepartmentController::class,'index'])->name('department');
     Route::post('department',[DepartmentController::class,'store'])->name('department.store');
@@ -61,6 +65,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::post('product',[ProductController::class,'store'])->name('product.store');
     Route::delete('/product/{id}',[ProductController::class,'destroy'])->name('product.destroy');
     Route::put('product/edit/{id}',[ProductController::class,'update'])->name('product.update');
+    Route::GET('/complaint',[ComplaintsController::class,'index']);
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\api\AuthController as ApiAuthController;
+use App\Http\Controllers\api\CategoryController as ApiCategoryController;
+use App\Http\Controllers\api\ComplaintController;
 use App\Http\Controllers\api\CustomerController;
 use App\Http\Controllers\api\DepartmentController;
 use App\Http\Controllers\api\EmployeeController;
-
-use App\Http\Controllers\api\ProductController;
-
+use App\Http\Controllers\Customer\AuthController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\DepartementController;
+use App\Http\Controllers\CategoryController;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,7 +44,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::delete('department/delete/{department}', [DepartmentController::class, 'delete']);
     Route::get('customer/{id}', [CustomerController::class, 'show']);
     Route::post('customer/edit/{customer}', [CustomerController::class, 'update']);
+    Route::get('category', [ApiCategoryController::class, 'index']);
+    Route::get('category/{id}', [ApiCategoryController::class, 'show']);
+    Route::post('category/add', [ApiCategoryController::class, 'add']);
+    Route::post('category/edit/{category}', [ApiCategoryController::class, 'update']);
+    Route::delete('category/delete/{category}', [ApiCategoryController::class, 'delete']);
     Route::get('product', [ProductController::class, 'index']);
+    Route::get('complaint/{id}', [ComplaintController::class, 'show']);
+    Route::post('complaint/add', [ComplaintController::class, 'add']);
 
 });
 
