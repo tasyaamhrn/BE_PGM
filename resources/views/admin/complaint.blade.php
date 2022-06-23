@@ -78,7 +78,7 @@
                 <th>Category</th>
                 <th>Type</th>
                 <th>Judul</th>
-                <th>Deskripsi</th>
+                <th  style="width:10%">Deskripsi</th>
                 <th>Tanggal</th>
                 <th>Status</th>
                 <th>Bukti</th>
@@ -139,20 +139,33 @@
                 <div class="modal-dialog modal-dialog-scrollable">
                   <div class="modal-content">
                     <div id="modals" class="modal-header modal-colored-header ">
-                      <h4 class="modal-title" id="warning-header-modalLabel">Edit Employee
+                      <h4 class="modal-title" id="warning-header-modalLabel">Tindak Lanjut
                       </h4>
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                      <form role="form text-left" method="post" action="{{ route('category.update', $c->id) }}" enctype="multipart/form-data">
+                      <form role="form text-left" method="post" action="{{ route('complaint.update', $c->id) }}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{method_field('PUT')}}
                         <div class="form-group">
-                          <label for="message-text" class="col-form-label">Name</label>
-                          <div>
-                            <input type="text" class="form-control" name="name" placeholder="Name" value="{{$c->name}}">
+                            {{-- <label for="message-text" class="col-form-label">Blok</label> --}}
+                            <div>
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="blok">
+                                    <option selected>{{$c->status}}</option>
+                                    <option value="Terkirim">Terkirim</option>
+                                    <option value="Dalam Proses">Dalam Proses</option>
+                                    <option value="Terselesaikan">Terselesaikan</option>
+                                </select>
+                            </div>
                           </div>
-                        </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">Bukti Tindak Lanjut</label>
+                            <div>
+                              <input type="file" class="form-control" name="tindak_lanjut">
+                              <label><b>*Jika tidak ada kosongkan saja</b></label>
+                            </div>
+                          </div>
                         {{-- <div class="form-group">
                           <label for="message-text" class="col-form-label">Departemen</label>
                           <div>
