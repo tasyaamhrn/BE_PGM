@@ -78,7 +78,7 @@
                 <th>Category</th>
                 <th>Type</th>
                 <th>Judul</th>
-                <th  style="width:10%">Deskripsi</th>
+                <th width="200px">Deskripsi</th>
                 <th>Tanggal</th>
                 <th>Status</th>
                 <th>Bukti</th>
@@ -119,7 +119,7 @@
                 <td>{{$c->tanggal}}</td>
                 <td>{{$c->status}}</td>
                 <td><img src="{{asset('./storage/'.$c->bukti )}}" height="40px" width="40px" />
-                <td>{{$c->tindak_lanjut}}</td>
+                <td><img src="{{asset('./storage/'.$c->tindak_lanjut )}}" height="40px" width="40px" />
                 <td>{{$c->feedback_score}}</td>
                 <td>{{$c->feedback_deskripsi}}</td>
                 <td>
@@ -151,7 +151,7 @@
                             {{-- <label for="message-text" class="col-form-label">Blok</label> --}}
                             <div>
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="blok">
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status">
                                     <option selected>{{$c->status}}</option>
                                     <option value="Terkirim">Terkirim</option>
                                     <option value="Dalam Proses">Dalam Proses</option>
