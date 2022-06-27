@@ -19,6 +19,7 @@ class Memo extends Model
         'tanggal',
         'status'
     ];
+
     public $incrementing = false;
 
     protected $keyType = 'string';
@@ -30,8 +31,24 @@ class Memo extends Model
             $issue->id = Str::uuid(36);
         });
     }
-    public function employee(){
-        return $this->belongsTo(Employee::class);
+    public function getPengirimNameAttribute()
+    {
+        return $this->pengirim->name;
+    }
+    public function getPenerimaNameAttribute()
+    {
+        return $this->penerima->name;
+    }
+    public function getMeetingJudulAttribute()
+    {
+        return $this->meeting->judul;
+    }
+    public function pengirim(){
+        return $this->belongsTo(Employee::class,'employee_id_pengirim');
+    }
+    public function penerima()
+    {
+        return $this->belongsTo(Employee::class,'employee_id_penerima');
     }
     public function history_memo(){
         return $this->hasMany(history_memo::class,'memo_id','id');

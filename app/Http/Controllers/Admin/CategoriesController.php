@@ -16,7 +16,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $category = Category::with('departmen')->get();
+        $category = Category::with('department')->get();
         $employee = Employee::get();
         $department = Department::all();
         $logged_in = Auth::id();

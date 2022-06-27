@@ -37,13 +37,10 @@ class DepartmentController extends Controller
         return redirect('/department');
     }
     public function update(Request $request, $id){
-        $this->validate($request, [
-            'name' => 'required',
-        ]);
         $department = Department::find($id);
         $department->name = $request->input('name');
-        $department->update();
-        return redirect()->back()->with('status','Department Updated Successfully');
+        $department->save();
+        return redirect('/department');
     }
     public function destroy($id){
         $department = Department::findOrFail($id);

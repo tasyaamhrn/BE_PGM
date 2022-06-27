@@ -18,7 +18,7 @@ class Product extends Model
         'status',
         'tanah_lebih',
         'discount',
-        'image',
+        'image'
     ];
     public $incrementing = false;
 
@@ -31,6 +31,13 @@ class Product extends Model
             $issue->id = Str::uuid(36);
         });
     }
+    public function getImageUrlAttribute(){
+        return url('storage/'. $this->image);
+    }
+    protected $appends = [
+        'image_url',
+
+    ];
     public function booking()
     {
         return $this->hasOne(Booking::class,'product_id','id');
