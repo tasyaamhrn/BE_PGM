@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\MeetingController;
 use App\Http\Controllers\admin\MemoController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -70,6 +71,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::put('complaint/edit/{id}',[ComplaintsController::class,'update'])->name('complaint.update');
     Route::GET('/memo',[MemoController::class,'index']);
     Route::put('memo/edit/{id}',[MemoController::class,'update'])->name('complaint.update');
+    Route::GET('/history',[HistoryController::class,'index']);
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

@@ -101,7 +101,7 @@
                   @endforeach -->
 
                 </td> --}}
-                <td>
+                <td class="d-flex flex-row">
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$m->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>

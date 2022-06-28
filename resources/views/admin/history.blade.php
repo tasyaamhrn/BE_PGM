@@ -4,12 +4,12 @@
 @section('page')
 
 <div class="col-12 align-self-center">
-  <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Memos</h4>
+  <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">History Memo</h4>
   <div class="d-flex align-items-center">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb m-0 p-0">
         <li class="breadcrumb-item"><a href="index.html" class="text-muted">Dashboard</a></li>
-        <li class="breadcrumb-item text-muted active" aria-current="page">Memos</li>
+        <li class="breadcrumb-item text-muted active" aria-current="page">History Memo</li>
       </ol>
     </nav>
   </div>
@@ -68,54 +68,54 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Memo Table</h4>
+        <h4 class="card-title">History Table</h4>
 
         <div class="table-responsive">
           <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
             <thead>
               <tr>
-                <th>Nama Pengirim</th>
-                <th>Nama Penerima</th>
-                <th>Judul Meeting</th>
                 <th>Judul Memo</th>
-                <th>Deskripsi</th>
-                <th>Tanggal</th>
-                <th>Status</th>
+                <th>Catatan</th>
+                <th>Bukti</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($memo as $m)
+              @foreach($history as $h)
               <tr>
+                <td>
+                  {{$h->memo->judul}}
+                  <!-- @foreach ($memo as $m)
+                  @if($m->id == $h->memo_id)
+                  {{$m->judul}}
+                  @endif
+                  @endforeach -->
 
-                <td>{{$m->pengirim->name}}</td>
-                <td>{{$m->penerima->name}}</td>
-                @if ($m->meeting_id)
-                <td>{{$m->meeting->judul}}</td>
-                @elseif ($m->meeting_id ==null)
-                <td><i>none</i></td>
+                </td>
+                  <td>
+                    {{$h->catatan}}
+                  </td>
+                <td><img src="{{asset('./storage/'.$h->bukti )}}" height="40px" width="40px" />
+                @if ($h->bukti == null)
+                <td>Gambar belom di upload</td>
+                @elseif ($h->bukti)
+                <td><img src="{{asset('./storage/'.$h->bukti )}}" height="40px" width="40px" />
                 @endif
-                <td>{{$m->judul}}</td>
-                <td>{{$m->deskripsi}}</td>
-                <td>{{$m->tanggal}}</td>
-                <td>{{$m->status}}</td>
+
                 <td class="d-flex flex-row">
-                  <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$m->id }}">
+                  <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$h->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
-                  <form method="post" action="{{ route('category.destroy', $m->id) }}">
+                  <form method="post" action="{{ route('category.destroy', $h->id) }}">
                     @method('DELETE')
                     @csrf
                     <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
                       <i class="fa fa-trash"></i></button>
                   </form>
-                  <a id="detail" class="btn btn-circle btn-lg btn-warning edit text-white" type="button" href="{{ url('/history') }}" >
-                    <span class="btn-label"><i class="fa fa-info"></i></span>
-                  </a>
                 </td>
               </tr>
               <!-- Modal Edit -->
-              <div id="editModal{{$m->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
+              <div id="editModal{{$c->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
                   <div class="modal-content">
                     <div id="modals" class="modal-header modal-colored-header ">
@@ -124,7 +124,7 @@
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                      <form role="form text-left" method="post" action="{{ route('complaint.update', $m->id) }}" enctype="multipart/form-data">
+                      <form role="form text-left" method="post" action="{{ route('complaint.update', $c->id) }}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{method_field('PUT')}}
                         <div class="form-group">
@@ -132,7 +132,7 @@
                             <div>
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
                                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status">
-                                    <option selected>{{$m->status}}</option>
+                                    <option selected>{{$c->status}}</option>
                                     <option value="Terkirim">Terkirim</option>
                                     <option value="Dalam Proses">Dalam Proses</option>
                                     <option value="Terselesaikan">Terselesaikan</option>
