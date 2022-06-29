@@ -272,7 +272,7 @@
         #logo {
             width: 100px;
             height: 100px;
-	margin-bottom: -40px;
+            margin-bottom: -40px;
         }
 
         footer i {
@@ -303,19 +303,35 @@
         </div>
         <div class="form-container sign-in-container">
 
+                {{-- @if ($errors->any())
+
+                <div class="alert alert-danger">
+
+                    <ul>
+
+                        @foreach ($errors->all() as $error)
+
+                        <li>{{ $error }}</li>
+
+                        @endforeach
+
+                    </ul>
+
+                </div><br />
+
+                @endif --}}
+                <form action="{{route('login')}}" method="post">
+
+                    <img id="logo" src="{{ asset('assets/images/logosa.png')}}">
+                    {{ csrf_field() }}
+
+                    <h1>Sign in</h1>
 
 
-				<form action="{{route('login')}}" method="post">
+                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
 
-				<img id="logo" src="{{ asset('assets/images/logosa.png')}}">
-                {{ csrf_field() }}
-
-                <h1>Sign in</h1>
-
-                <input type="email" name="email" class="form-control" placeholder="Email">
-                <input type="password" name="password" class="form-control" placeholder="Password">
-
-                <button>Sign In</button>
+                    <button>Sign In</button>
                 </form>
             </div>
             <div class="overlay-container">

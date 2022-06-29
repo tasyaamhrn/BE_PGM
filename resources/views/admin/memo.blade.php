@@ -18,48 +18,79 @@
 <!-- End Page -->
 <!-- Modal Add Employee -->
 <!-- Button Modal-->
-{{-- <button type="button" id="add" class=" btn btn-rounded" data-toggle="modal" data-target="#warning-header-modal">Add Complaint</button> --}}
+<button type="button" id="add" class=" btn btn-rounded" data-toggle="modal" data-target="#warning-header-modal">Add Memo</button>
 <!-- End Button Modal -->
-{{-- <div id="warning-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
+<div id="warning-header-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div id="modals" class="modal-header modal-colored-header ">
-        <h4 class="modal-title" id="warning-header-modalLabel">Add Complaint
+        <h4 class="modal-title" id="warning-header-modalLabel">Add Memo
         </h4>
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
-        <form role="form text-left" method="post" action="{{ route('category.store') }}" enctype="multipart/form-data">
+        <form role="form text-left" method="post" action="{{ route('memo.store') }}" enctype="multipart/form-data">
           {{csrf_field()}}
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Name</label>
+            <label for="message-text" class="col-form-label">Sender</label>
             <div>
-              <input type="text" class="form-control" name="name" placeholder="Name">
+              <input type="text" readonly="readonly" class="form-control" name="employee_id_pengirim" value="{{$name}}">
             </div>
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Departemen</label>
+            <label for="message-text" class="col-form-label">Receiver</label>
             <div>
-              <select name='dept_id' class='form-control'>
-                @foreach($department as $dept)
+              <select name='employee_id_penerima' class='form-control'>
+                @foreach($employee_name as $em)
                 <option hidden value="">
                   <center>-- Pilih --</center>
                 </option>
-                <option value="{{$dept->id}}">{{$dept->name}}</option>
+                <option value="{{$em->id}}">{{$em->name}}</option>
                 @endforeach
               </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Meeting Tittle</label>
+            <div>
+              <select name='meeting_id' class='form-control'>
+                @foreach($meeting as $met)
+                <option hidden value="">
+                  <center>-- Pilih --</center>
+                </option>
+                <option value="{{$met->id}}">{{$met->judul}}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Memo Tittle</label>
+            <div>
+              <input class="form-control" name="judul" placeholder="Memo Tittle"></input>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Description</label>
+            <div>
+              <textarea class="form-control" name="deskripsi" placeholder="Description"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Date</label>
+            <div>
+              <input type="date" class="form-control" name="tanggal" placeholder="date">
             </div>
           </div>
           <div class="form-group text-center">
             <button id="btn" type="submit" class="btn btn-block">Submit</button>
           </div>
         </form>
-      </div> --}}
-    {{-- </div> --}}
+      </div>
+    </div>
     <!-- /.modal-content -->
-  {{-- </div> --}}
+  </div>
   <!-- /.modal-dialog -->
-{{-- </div> --}}
+</div>
 <!-- End Modal Add Employee -->
 <br>
 <br>
@@ -74,12 +105,12 @@
           <table id="multi_col_order" class="table table-striped table-bordered display no-wrap" style="width:100%">
             <thead>
               <tr>
-                <th>Nama Pengirim</th>
-                <th>Nama Penerima</th>
-                <th>Judul Meeting</th>
-                <th>Judul Memo</th>
-                <th>Deskripsi</th>
-                <th>Tanggal</th>
+                <th>Sender</th>
+                <th>Receiver</th>
+                <th>Meeting Tittle</th>
+                <th>Memo Tittle</th>
+                <th>Description</th>
+                <th>Date</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
@@ -100,16 +131,8 @@
                 <td>{{$m->tanggal}}</td>
                 <td>{{$m->status}}</td>
                 <td class="d-flex flex-row">
-                  <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$m->id }}">
-                    <span class="btn-label"><i class="far fa-edit"></i></span>
-                  </a>
-                  <form method="post" action="{{ route('category.destroy', $m->id) }}">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
-                      <i class="fa fa-trash"></i></button>
-                  </form>
-                  <a id="detail" class="btn btn-circle btn-lg btn-warning edit text-white" type="button" href="{{ url('/history') }}" >
+
+                  <a id="detail" class="btn btn-circle btn-lg btn-info  text-white" type="button" href="{{ url('/history') }}" >
                     <span class="btn-label"><i class="fa fa-info"></i></span>
                   </a>
                 </td>

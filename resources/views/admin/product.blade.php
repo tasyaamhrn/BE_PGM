@@ -118,10 +118,10 @@
                                 <th>Blok</th>
                                 <th>No.Kavling</th>
                                 <th>Type</th>
-                                <th>Luas(m<sup>2</sup>)</th>
+                                <th>Large(m<sup>2</sup>)</th>
                                 <th>Price</th>
                                 <th>Status</th>
-                                <th>Tanah Lebih</th>
+                                <th>Remainder</th>
                                 <th>Discount(%)</th>
                                 <th>Image</th>
                                 <th>Action</th>

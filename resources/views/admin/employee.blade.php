@@ -112,7 +112,7 @@
                 <th>Address</th>
                 <th>Phone</th>
                 <th>Avatar</th>
-                <th>Departemen</th>
+                <th>Department</th>
                 <th>Action</th>
               </tr>
             </thead>

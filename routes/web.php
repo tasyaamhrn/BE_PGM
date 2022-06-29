@@ -70,8 +70,9 @@ Route::group(['middleware' => ['admin']], function () {
     Route::GET('/complaint',[ComplaintsController::class,'index']);
     Route::put('complaint/edit/{id}',[ComplaintsController::class,'update'])->name('complaint.update');
     Route::GET('/memo',[MemoController::class,'index']);
-    Route::put('memo/edit/{id}',[MemoController::class,'update'])->name('complaint.update');
+    Route::put('memo/edit/{id}',[MemoController::class,'update'])->name('memo.update');
     Route::GET('/history',[HistoryController::class,'index']);
+    Route::post('memo',[MemoController::class,'store'])->name('memo.store');
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 

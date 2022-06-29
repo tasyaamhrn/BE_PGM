@@ -169,7 +169,7 @@
                         </li>
                         <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/department') }}"
                                 aria-expanded="false"><i data-feather="globe" class="feather-icon"></i><span
-                                    class="hide-menu">Departemen
+                                    class="hide-menu">Department
                                 </span></a>
                         </li>
                         <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/categories') }}"

@@ -77,12 +77,12 @@
                 <th>Customer Name</th>
                 <th>Category</th>
                 <th>Type</th>
-                <th>Judul</th>
-                <th width="200px">Deskripsi</th>
-                <th>Tanggal</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Date</th>
                 <th>Status</th>
                 <th>Bukti</th>
-                <th>Tindak Lanjut</th>
+                <th>Response</th>
                 <th>Feedback Scores</th>
                 <th>Feedback Deskripsi</th>
                 <th>Action</th>

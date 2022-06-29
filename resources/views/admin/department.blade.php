@@ -15,6 +15,7 @@
   </div>
 </div>
 @endsection
+
 <!-- End Page -->
 <!-- Modal Add Department -->
 <!-- Button Modal-->
@@ -29,6 +30,16 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
       </div>
       <div class="modal-body">
+
+            @if ($errors->any())
+            <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+            </div><br />
+            @endif
         <form role="form text-left" method="post" action="{{ route('department.store') }}" enctype="multipart/form-data">
           {{csrf_field()}}
           <div class="form-group">
@@ -75,13 +86,13 @@
                 <td>{{$d->name}}</td>
 
                 <td class="d-flex flex-row">
-                <a type="button" class="btn btn-circle btn-lg btn-warning edit"  data-toggle="modal" data-target="#editModal-{{$d->id }}">
+                <a type="button" class="btn btn-circle btn-lg btn-warning edit text-white"  data-toggle="modal" data-target="#editModal-{{$d->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
                   <form method="post" action="{{ route('department.destroy', $d->id) }}">
                     @method('DELETE')
                     @csrf
-                    <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
+                    <button class="btn btn-circle btn-lg btn-danger " onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
                       <i class="fa fa-trash"></i></button>
                   </form>
                 </td>

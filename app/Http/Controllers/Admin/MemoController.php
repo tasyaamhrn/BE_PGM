@@ -28,8 +28,9 @@ class MemoController extends Controller
             $employee = Employee::where('user_id',auth()->user()->id)->first();
             $memo = Memo::where('employee_id_pengirim', $employee->id)->orWhere('employee_id_penerima', $employee->id)->get();
             $meeting = Meeting::all();
+            $employee_name = Employee::all();
         }
 
-        return view('admin.memo', compact('name', 'memo', 'meeting', 'employee'));
+        return view('admin.memo', compact('name', 'memo', 'meeting', 'employee','employee_name'));
     }
 }

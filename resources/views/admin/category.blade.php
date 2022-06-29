@@ -34,8 +34,12 @@
           <div class="form-group">
             <label for="message-text" class="col-form-label">Name</label>
             <div>
-              <input type="text" class="form-control" name="name" placeholder="Name">
+              <input type="text" class="form-control" name="name" placeholder="Name" value="{{@old('name')}}">
             </div>
+            <br>
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Departemen</label>
