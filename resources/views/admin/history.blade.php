@@ -95,7 +95,7 @@
                   <td>
                     {{$h->catatan}}
                   </td>
-                <td><img src="{{asset('./storage/'.$h->bukti )}}" height="40px" width="40px" />
+
                 @if ($h->bukti == null)
                 <td>Gambar belom di upload</td>
                 @elseif ($h->bukti)
@@ -106,16 +106,11 @@
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$h->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
-                  <form method="post" action="{{ route('category.destroy', $h->id) }}">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
-                      <i class="fa fa-trash"></i></button>
-                  </form>
+
                 </td>
               </tr>
               <!-- Modal Edit -->
-              <div id="editModal{{$c->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
+              <div id="editModal{{$h->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
                   <div class="modal-content">
                     <div id="modals" class="modal-header modal-colored-header ">
@@ -124,7 +119,7 @@
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                      <form role="form text-left" method="post" action="{{ route('complaint.update', $c->id) }}" enctype="multipart/form-data">
+                      <form role="form text-left" method="post" action="{{ route('complaint.update', $h->id) }}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{method_field('PUT')}}
                         <div class="form-group">
@@ -132,7 +127,7 @@
                             <div>
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Status</label>
                                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="status">
-                                    <option selected>{{$c->status}}</option>
+                                    <option selected>{{$h->status}}</option>
                                     <option value="Terkirim">Terkirim</option>
                                     <option value="Dalam Proses">Dalam Proses</option>
                                     <option value="Terselesaikan">Terselesaikan</option>
@@ -142,8 +137,14 @@
                           <div class="form-group">
                             <label for="message-text" class="col-form-label">Bukti Tindak Lanjut</label>
                             <div>
-                              <input type="file" class="form-control" name="tindak_lanjut">
+                              <input type="file" class="form-control" name="bukti">
                               <label><b>*Jika tidak ada kosongkan saja</b></label>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="message-text" class="col-form-label">Catatan</label>
+                            <div>
+                              <textarea class="form-control" name="catatan" placeholder="Catatan"></textarea>
                             </div>
                           </div>
                         {{-- <div class="form-group">
