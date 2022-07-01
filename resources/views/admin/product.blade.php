@@ -118,10 +118,10 @@
                                 <th>Blok</th>
                                 <th>No.Kavling</th>
                                 <th>Type</th>
-                                <th>Large(m<sup>2</sup>)</th>
+                                <th>Luas(m<sup>2</sup>)</th>
                                 <th>Price</th>
                                 <th>Status</th>
-                                <th>Remainder</th>
+                                <th>Tanah Lebih</th>
                                 <th>Discount(%)</th>
                                 <th>Image</th>
                                 <th>Action</th>
@@ -140,7 +140,7 @@
                                 <td>{{$p->discount}}</td>
                                 <td><img src="{{ url('storage').'/'.$p->image }}" height="40px" width="40px" />
 
-                                <td class="d-flex flex-row">
+                                <td>
                                     <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$p->id }}">
                                         <span class="btn-label"><i class="far fa-edit"></i></span>
                                     </a>

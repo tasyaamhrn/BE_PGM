@@ -34,12 +34,8 @@
           <div class="form-group">
             <label for="message-text" class="col-form-label">Name</label>
             <div>
-              <input type="text" class="form-control" name="name" placeholder="Name" value="{{@old('name')}}">
+              <input type="text" class="form-control" name="name" placeholder="Name">
             </div>
-            <br>
-            @error('name')
-                <div class="alert alert-danger">{{ $message }}</div>
-            @enderror
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Departemen</label>
@@ -94,7 +90,7 @@
                   @endforeach -->
 
                 </td>
-                <td class="d-flex flex-row">
+                <td>
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$c->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>

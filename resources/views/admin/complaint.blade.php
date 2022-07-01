@@ -77,12 +77,12 @@
                 <th>Customer Name</th>
                 <th>Category</th>
                 <th>Type</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Date</th>
+                <th>Judul</th>
+                <th width="200px">Deskripsi</th>
+                <th>Tanggal</th>
                 <th>Status</th>
                 <th>Bukti</th>
-                <th>Response</th>
+                <th>Tindak Lanjut</th>
                 <th>Feedback Scores</th>
                 <th>Feedback Deskripsi</th>
                 <th>Action</th>
@@ -126,7 +126,7 @@
                 @endif
                 <td>{{$c->feedback_score}}</td>
                 <td>{{$c->feedback_deskripsi}}</td>
-                <td class="d-flex flex-row">
+                <td>
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$c->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
