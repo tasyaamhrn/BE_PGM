@@ -18,7 +18,7 @@ class HistoryMemoController extends Controller
 {
     public function index($memo_id){
         $logged_in = Auth::id();
-        $history = history_memo::where('memo_id', $memo_id)->get();
+        $history = history_memo::where('memo_id', $memo_id)->orderBy('created_at', 'DESC')->get();
         if (Auth::user()->role_id == 1) {
             $roles = Auth::user()->roles->name;
             $name = $roles;
@@ -34,14 +34,14 @@ class HistoryMemoController extends Controller
             $meeting = Meeting::all();
 
         }
-        return view('admin.history', compact('name','employee','history', 'memo'));
+        return view('admin.history', compact('history', 'name','employee','history', 'memo'));
 
     }
     public function store(Request $request, $memo_id)
     {
         $history = history_memo::find($memo_id);
+
         $memo = Memo::all();
-        // dd($history);
         $data = $request->all();
         $rules = [
             // 'catatan' => ['required', 'string', 'max:255'],
@@ -63,9 +63,14 @@ class HistoryMemoController extends Controller
                 'memo_id' => $history->memo_id,
                 'catatan' => $request->catatan,
             ]);
+
         }else{
             $history->bukti = $bukti;
             $history->save();
+            //When you use get() you call collection When you use first() or find($id) then you get single record that you can update.
+            $memo = Memo::find($history->memo_id)->first();
+            $memo->status = $request->status;
+            $memo->save();
         }
         return redirect()->back();
 
