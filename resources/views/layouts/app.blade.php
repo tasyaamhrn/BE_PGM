@@ -192,6 +192,11 @@
                                 class="hide-menu">Booking
                             </span></a>
                     </li>
+                    <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/status-booking') }}"
+                        aria-expanded="false"><i data-feather="shopping-cart" class="feather-icon"></i><span
+                            class="hide-menu">Status Booking
+                        </span></a>
+                </li>
                         <li class="sidebar-item" > <a class="sidebar-link" href="{{url('/memo')}}"
                                 aria-expanded="false"><i data-feather="file" class="feather-icon"></i><span
                                     class="hide-menu">Memo

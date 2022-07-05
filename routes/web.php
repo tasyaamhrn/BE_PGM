@@ -78,7 +78,7 @@ Route::group(['middleware' => ['admin']], function () {
     Route::GET('/status-booking',[StatusBookingController::class,'index']);
     Route::post('/status-booking',[StatusBookingController::class,'store'])->name('status.store');
     Route::put('/status-booking/edit/{status_id}',[StatusBookingController::class,'update'])->name('status.update');
-    Route::delete('/status-booking/delete/{id}',[StatusBookingController::class,'update'])->name('status.destroy');
+    Route::delete('/status-booking/delete/{id}',[StatusBookingController::class,'destroy'])->name('status.destroy');
 });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
