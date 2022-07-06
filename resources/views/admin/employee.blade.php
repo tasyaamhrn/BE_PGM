@@ -132,8 +132,7 @@
                   {{$e->department->name}}
                 </td>
 
-                <td class="d-flex flex-row">
-
+                <td>
 
                   <button id="edit" type="button" class="btn btn-circle btn-lg btn-warning edit" data-toggle="modal" data-target="#editModal-{{$e->user_id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
