@@ -156,7 +156,7 @@
                                     class="hide-menu">Dashboard</span></a></li>
                         <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Applications</span></li>
-
+                        @if(Auth::check() && Auth::user()->role_id  == "1")
                         <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/employee') }}"
                                 aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
                                     class="hide-menu">Employee
@@ -177,11 +177,7 @@
                                     class="hide-menu">Category
                                 </span></a>
                         </li>
-                        <li class="sidebar-item" > <a class="sidebar-link" href="{{url('/complaint')}}"
-                                aria-expanded="false"><i data-feather="inbox" class="feather-icon"></i><span
-                                    class="hide-menu">Complaint
-                                </span></a>
-                        </li>
+
                         <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/product') }}"
                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                                     class="hide-menu">Product
@@ -192,6 +188,17 @@
                                 class="hide-menu">Booking
                             </span></a>
                     </li>
+                    <li class="sidebar-item" > <a class="sidebar-link" href="{{ url('/meeting') }}"
+                        aria-expanded="false"><i data-feather="clipboard" class="feather-icon"></i><span
+                            class="hide-menu">Meeting
+                        </span></a>
+                </li>
+                @elseif (Auth::check())
+                    <li class="sidebar-item" > <a class="sidebar-link" href="{{url('/complaint')}}"
+                        aria-expanded="false"><i data-feather="inbox" class="feather-icon"></i><span
+                            class="hide-menu">Complaint
+                        </span></a>
+                </li>
                         <li class="sidebar-item" > <a class="sidebar-link" href="{{url('/memo')}}"
                                 aria-expanded="false"><i data-feather="file" class="feather-icon"></i><span
                                     class="hide-menu">Memo
@@ -202,6 +209,7 @@
                                     class="hide-menu">Meeting
                                 </span></a>
                         </li>
+                        @endif
                              <li class="list-divider"></li>
                         <li class="nav-small-cap"><span class="hide-menu">Extra</span></li>
 
