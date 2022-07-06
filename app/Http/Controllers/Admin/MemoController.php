@@ -61,6 +61,7 @@ class MemoController extends Controller
             'memo_id' => $memo->id,
             'catatan' => $request->catatan,
             'bukti' => $request->bukti,
+
         ]);
 
         return redirect('/memo');

@@ -139,20 +139,7 @@
                                                 {{csrf_field()}}
                                                 {{method_field('PUT')}}
                                                 @if ($h->memo->employee_id_penerima == auth()->user()->employee->id)
-                                                <div class="form-group">
-                                                    {{-- <label for="message-text" class="col-form-label">Blok</label> --}}
-                                                    <div>
-                                                        <label class="mr-sm-2"
-                                                            for="inlineFormCustomSelect">Status</label>
-                                                        <select class="custom-select mr-sm-2"
-                                                            id="inlineFormCustomSelect" name="status">
-                                                            <option selected>{{$h->status}}</option>
-                                                            <option value="Terkirim">Terkirim</option>
-                                                            <option value="Dalam Proses">Dalam Proses</option>
-                                                            <option value="Terselesaikan">Terselesaikan</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
+
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">Bukti Tindak
                                                         Lanjut</label>
@@ -162,6 +149,20 @@
                                                     </div>
                                                 </div>
                                                 @else
+                                                <div class="form-group">
+                                                    {{-- <label for="message-text" class="col-form-label">Blok</label> --}}
+                                                    <div>
+                                                        <label class="mr-sm-2"
+                                                            for="inlineFormCustomSelect">Status</label>
+                                                        <select class="custom-select mr-sm-2"
+                                                            id="inlineFormCustomSelect" name="status">
+                                                            <option selected>{{$h->status}}</option>
+                                                            <option value="Terkirim">Terkirim</option>
+                                                            <option value="Revisi">Revisi</option>
+                                                            <option value="Terselesaikan">Terselesaikan</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <label for="message-text" class="col-form-label">Catatan</label>
                                                     <div>
