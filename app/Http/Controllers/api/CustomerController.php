@@ -29,13 +29,13 @@ class CustomerController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
         ];
-        $avatar = null;
-        if ($request->avatar instanceof UploadedFile) {
-            $avatar = $request->avatar->store('avatar', 'public');
-            $data['avatar'] = $avatar;
-        }else{
-            unset($data['avatar']);
-        }
+        // $avatar = null;
+        // if ($request->avatar instanceof UploadedFile) {
+        //     $avatar = $request->avatar->store('avatar', 'public');
+        //     $data['avatar'] = $avatar;
+        // }else{
+        //     unset($data['avatar']);
+        // }
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
@@ -49,23 +49,30 @@ class CustomerController extends Controller
             'name' => $request->name,
             'nik'  => $request->nik,
             'address' => $request->address,
-            'avatar' => $avatar,
+            // 'avatar' => $avatar,
             'phone' => $request->phone,
             'user_id' => $register->id,
 
         ]);
         if ($register) {
             return response()->json([
-                'success' =>true,
-                'message' => 'Registrasi Berhasil',
-                'data' => $customer
-            ], 201);
+                'meta' => [
+                    'code' => 200,
+                    'status' => 'Success',
+                    'message' => 'Success'
+                ],
+                'data' => [
+        
+                    'customer'        => $customer
+                ]
+            ]);
         } else {
             return response()->json([
-                'success' =>false,
-                'message' => 'Registrasi Gagal',
-
-            ], 200);
+                'meta' => [
+                    'code' => 500,
+                    'status' => 'Failed',
+                    'message' => "Register Failed"
+                ],],200);
         }
     }
     public function login(Request $request)
@@ -79,9 +86,11 @@ class CustomerController extends Controller
             $credentials = request(['email', 'password']);
             if (!Auth::attempt($credentials)) {
                 return response()->json([
-                    'success' => false,
-                    'message' => 'Wrong Email or Password',
-                ],200);
+                    'meta' => [
+                        'code' => 500,
+                        'status' => 'Faild',
+                        'message' => "Wrong Email or Password"
+                    ],],200);
             }
             // Jika Hash Tidak sesuai maka Error
             $user = User::where('email', $request->email)->first();
@@ -105,7 +114,12 @@ class CustomerController extends Controller
 
         } catch (Exception $error ) {
             return response()->json([
-                'message' => "Authentication Failed " . $error
+                'meta' => [
+                    'code' => 500,
+                    'status' => 'Faild',
+                    'message' => "Authentication Failed " . $error
+                ],
+                // 'message' => "Authentication Failed " . $error
             ]);
         }
     }
