@@ -278,6 +278,7 @@
     <script src="{{ asset('assets/extra-libs/datatables.net-bs4/js/dataTables.bootstrap4.js')}}"></script>
     <script src="{{ asset('assets/extra-libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{ asset('dist/js/pages/datatable/datatable-basic.init.js')}}"></script>
+  @include('sweetalert::alert')
   </body>
 
 </html>
