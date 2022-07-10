@@ -29,13 +29,13 @@ class CustomerController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
         ];
-        // $avatar = null;
-        // if ($request->avatar instanceof UploadedFile) {
-        //     $avatar = $request->avatar->store('avatar', 'public');
-        //     $data['avatar'] = $avatar;
-        // }else{
-        //     unset($data['avatar']);
-        // }
+        $avatar = null;
+        if ($request->avatar instanceof UploadedFile) {
+            $avatar = $request->avatar->store('avatar', 'public');
+            $data['avatar'] = $avatar;
+        }else{
+            unset($data['avatar']);
+        }
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
@@ -49,7 +49,7 @@ class CustomerController extends Controller
             'name' => $request->name,
             'nik'  => $request->nik,
             'address' => $request->address,
-            // 'avatar' => $avatar,
+            'avatar' => $avatar,
             'phone' => $request->phone,
             'user_id' => $register->id,
 
@@ -59,10 +59,10 @@ class CustomerController extends Controller
                 'meta' => [
                     'code' => 200,
                     'status' => 'Success',
-                    'message' => 'Success'
+                    'message' => 'Data Customer Created'
                 ],
                 'data' => [
-        
+
                     'customer'        => $customer
                 ]
             ]);
@@ -71,7 +71,7 @@ class CustomerController extends Controller
                 'meta' => [
                     'code' => 500,
                     'status' => 'Failed',
-                    'message' => "Register Failed"
+                    'message' => "Registration Failed"
                 ],],200);
         }
     }
@@ -88,7 +88,7 @@ class CustomerController extends Controller
                 return response()->json([
                     'meta' => [
                         'code' => 500,
-                        'status' => 'Faild',
+                        'status' => 'Failed',
                         'message' => "Wrong Email or Password"
                     ],],200);
             }
@@ -116,7 +116,7 @@ class CustomerController extends Controller
             return response()->json([
                 'meta' => [
                     'code' => 500,
-                    'status' => 'Faild',
+                    'status' =>'Failed',
                     'message' => "Authentication Failed " . $error
                 ],
                 // 'message' => "Authentication Failed " . $error
@@ -128,9 +128,11 @@ class CustomerController extends Controller
         // Revoke current user token
         $user->tokens()->where('id', $user->currentAccessToken()->id)->delete();
         return response()->json([
-            'success' => true,
-            'message' => 'Logout Berhasil',
-
+            'meta' => [
+                'code' => 200,
+                'status' => 'success',
+                'message' => 'Logout Berhasil',
+            ]
         ],200);
     }
     public function update(Request $request, $id )
@@ -147,15 +149,20 @@ class CustomerController extends Controller
         $customer = Customer::find($id);
         if (!$customer) {
             return response()->json([
-                'message' => 'User Not Found'
-            ]);
+                'meta' => [
+                    'code' => 404,
+                    'status' => 'Failed',
+                    'message' => 'Customer Not Found'
+                ],
+
+            ],200);
         }
         if (request()->hasFile('avatar')) {
-            $avatar = request()->file('avatar')->store('image', 'public');
+            $avatar = request()->file('avatar')->store('avatar', 'public');
             if (Storage::disk('public')->exists($customer->avatar)) {
                 Storage::disk('public')->delete([$customer->avatar]);
             }
-            $image = request()->file('avatar')->store('image', 'public');
+            $avatar = request()->file('avatar')->store('avatar', 'public');
             $data['avatar'] = $avatar;
             $customer->update($data);
         }else{
@@ -166,12 +173,16 @@ class CustomerController extends Controller
           return response()->json($validator->errors(), 400);
         }
         $customer->update($data);
-        $response = [
-            'success'   => true,
-            'message'   => 'Data Customer Updated',
-            'data'      => $customer,
-        ];
-        return response()->json($response, Response::HTTP_OK);
+        return response()->json([
+            'meta' => [
+                'code' => 200,
+                'status' => 'success',
+                'message' => 'Data Customer updated successfully'
+            ],
+            'data' => [
+                'customer' => $customer
+            ]
+        ]);
 
     }
     public function show($id)
@@ -179,15 +190,22 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
         if ($customer) {
             return response()->json([
-                'success' => true,
-                'message' => 'Detail User',
-                'data' => $customer
+                'meta' => [
+                    'code' => 200,
+                    'status' => 'success',
+                    'message' => 'Detail Customer',
+                ],
+                'data' => [
+                    'customer' => $customer
+                ],
             ],200);
         }else {
             return response()->json([
-                'success' => false,
-                'message' => 'User Not Found',
-                'data' => []
+                'meta' => [
+                    'code' => 404,
+                    'status' => 'Failed',
+                    'message' => 'Customer Not Found'
+                ],
             ],200);
         }
 

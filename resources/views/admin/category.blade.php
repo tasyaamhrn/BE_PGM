@@ -143,10 +143,10 @@
                         </div>
                       </form>
                     </div>
-                  </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
+                  </div>
+                </div>
               </div>
-              <!-- End Modal Edit -->
+          
               @endforeach
             </tbody>
           </table>
