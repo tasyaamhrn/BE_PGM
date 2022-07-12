@@ -24,7 +24,7 @@ class AuthController extends Controller
             // Alert::success('Congrats', 'Login Successfully');
             return redirect('/employee')->withSuccess('Login Success');
         }else {
-            Alert::error('Error', 'Failed Login');
+            Alert::error('Error', 'Failed Login,Check your email and password');
             return redirect('/');
             // ->withFail('Login Gagal');
 
