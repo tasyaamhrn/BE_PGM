@@ -22,12 +22,18 @@ class AuthController extends Controller
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             // Alert::success('Congrats', 'Login Successfully');
-            return redirect('/employee');
+            return redirect('/employee')->withSuccess('Login Success');
         }else {
+            Alert::error('Error', 'Failed Login');
+            return redirect('/');
+            // ->withFail('Login Gagal');
+
             // alert()->error('Title','Lorem Lorem Lorem');
             // Alert::error('Error Title', 'Error Message');
+            // return back()->with('error', 'The error message here!');
 
-            return redirect('/')->with('loginError', 'Login anda gagal !');
+            // return redirect("/")->withFail('Error message');
+            // return redirect('/')->withError('The error message here!');
 
 
         }
