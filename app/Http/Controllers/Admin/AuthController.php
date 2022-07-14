@@ -21,21 +21,11 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            // Alert::success('Congrats', 'Login Successfully');
-            return redirect('/employee')->withSuccess('Login Success');
+            Alert::success('Congrats', 'Login Successfully');
+            return redirect('/complaint');
         }else {
-            Alert::error('Error', 'Failed Login,Check your email and password');
+            Alert::error('Error', 'Failed Login');
             return redirect('/');
-            // ->withFail('Login Gagal');
-
-            // alert()->error('Title','Lorem Lorem Lorem');
-            // Alert::error('Error Title', 'Error Message');
-            // return back()->with('error', 'The error message here!');
-
-            // return redirect("/")->withFail('Error message');
-            // return redirect('/')->withError('The error message here!');
-
-
         }
 
     }
