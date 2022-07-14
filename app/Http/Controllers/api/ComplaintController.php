@@ -16,23 +16,9 @@ class ComplaintController extends Controller
     public function index(Request $request)
     {
         $complaint = Complaint::with('customer', 'category')->
-        when(($request->get('cust_id')), function ($query) use ($request)
-        {
-            $query->where('cust_id', $request->cust_id);
-        })->first();;
-        if ($complaint) {
-
-            return response()->json([
-                'meta' => [
-                    'code'  => 200,
-                    'status' => 'success',
-                    'message' => 'Data Complaint Found'
-                ],
-                'data' => [
-                    'complaint' => new ComplaintResource($complaint)
-                ],
-            ]);
-        }else {
+        where('cust_id', $request->cust_id)->get();
+        // return $complaint;
+        if ($complaint->isEmpty()) {
             return response()->json([
                 'meta' => [
                     'code' => 404,
@@ -40,6 +26,17 @@ class ComplaintController extends Controller
                     'message' => 'Data Complaint Not Found'
                 ],
             ],200);
+        }else {
+            return response()->json([
+                'meta' => [
+                    'code'  => 200,
+                    'status' => 'success',
+                    'message' => 'Data Complaint Found'
+                ],
+                'data' => [
+                    'complaint' => $complaint
+                ],
+            ]);
         }
     }
 
