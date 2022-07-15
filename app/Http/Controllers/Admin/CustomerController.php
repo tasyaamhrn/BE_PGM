@@ -83,6 +83,7 @@ class CustomerController extends Controller
             'user_id' => $register->id,
             // 'avatar' => $avatar,
         ]);}
+        toast('Your Post as been submited!','success');
         return redirect('/customer');
     }
     public function delete($user_id)
@@ -119,7 +120,7 @@ class CustomerController extends Controller
         $customer->phone=$request->phone;
 
         if($user->save() && $customer->save()){
-
+            toast('Customer Updated!','success');
             return redirect('/customer');
         }
 

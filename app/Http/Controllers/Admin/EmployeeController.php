@@ -54,6 +54,7 @@ class EmployeeController extends Controller
             'avatar' => $avatar,
 
         ]);
+        toast('Your Post as been submited!','success');
         return redirect('/employee');
     }
 
@@ -140,6 +141,7 @@ class EmployeeController extends Controller
             return response()->json($validator->errors(), 400);
         }
         $employee->update($data);
+        toast('Employee Updated!','success');
         return redirect('/employee');
     }
 }

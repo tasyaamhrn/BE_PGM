@@ -41,7 +41,7 @@ class DepartmentController extends Controller
         $department = Department::find($id);
         $department->name = $request->input('name');
         $department->save();
-        toast('Your Post as been Updated!','success');
+        toast('Department Updated!','success');
         return redirect('/department');
     }
     public function destroy($id){

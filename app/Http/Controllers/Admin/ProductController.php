@@ -118,6 +118,7 @@ class ProductController extends Controller
             'image' => $image,
 
         ]);
+        toast('Your Product as been submited!','success');
         return redirect('/product');
     }
 
@@ -154,6 +155,7 @@ class ProductController extends Controller
             return response()->json($validator->errors(), 400);
         }
         $product->update($data);
+        toast('Product Updated!','success');
         return redirect('/product');
     }
     public function destroy($id){
