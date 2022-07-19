@@ -118,7 +118,7 @@ class ProductController extends Controller
             'image' => $image,
 
         ]);
-        toast('Your Product as been submited!','success');
+        toast('Your Product has been submited!','success');
         return redirect('/product');
     }
 
@@ -161,6 +161,7 @@ class ProductController extends Controller
     public function destroy($id){
         $product = Product::findOrFail($id);
         $product->delete();
+        toast('Product has been Deleted!','success');
         return redirect('/product');
     }
 }

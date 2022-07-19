@@ -44,7 +44,7 @@ class MeetingController extends Controller
             'employee_id' => $id,
 
         ]);
-        toast('Your Notulensid as been submited!','success');
+        toast('Your Notulensi as been submited!','success');
         return redirect('/meeting');
     }
     public function destroy ($id){
