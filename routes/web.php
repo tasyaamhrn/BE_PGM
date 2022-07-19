@@ -13,6 +13,7 @@ use App\Http\Controllers\admin\MemoController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\admin\StatusBookingController;
 use App\Http\Controllers\api\BookingController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //employee
 
 Route::group(['middleware' => ['admin']], function () {
+    Route::GET('/dashboard',[DashboardController::class,'index']);
     Route::GET('/employee',[EmployeeController::class,'index']);
     Route::post('employee',[EmployeeController::class,'store'])->name('employee.store');
     Route::post('employee/edit/{id}',[EmployeeController::class,'update'])->name('employee.update');
