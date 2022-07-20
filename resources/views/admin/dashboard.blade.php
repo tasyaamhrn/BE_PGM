@@ -6,32 +6,37 @@
 
     </div>
 @endsection
-<!-- Page -->
-
-<!-- ============================================================== -->
-<!-- End Bread crumb and right sidebar toggle -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
-<!-- Container fluid  -->
-<!-- ============================================================== -->
 <div class="container-fluid">
-    <!-- *************************************************************** -->
+    <!-- ********************* -->
     <!-- Start First Cards -->
-    <!-- *************************************************************** -->
+    <!-- ********************* -->
     <div class="card-group">
         <div class="card border-right">
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">236</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium">
+                                @php
+                                    $arrayjumlah = [];
+                                @endphp
+                                @foreach ($memo as $memos)
+                                    @php
+                                        $arrayjumlah[] = $memos;
+                                    @endphp
+                                @endforeach
+                                @php
+                                    $jum = count($arrayjumlah);
+                                @endphp
+                                {{ $jum }}
+                            </h2>
                             <span
-                                class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
+                                class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">Received</span>
                         </div>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Memo</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
-                        <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
+                        <span class="opacity-7 text-muted"><i data-feather="file"></i></span>
                     </div>
                 </div>
             </div>
@@ -40,13 +45,27 @@
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup
-                                class="set-doller">$</sup>18,306</h2>
+                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
+                            @php
+                                $arrayjumlah = [];
+                            @endphp
+                            @foreach ($memo as $memos)
+                                @if ($memos['status'] == 'Terselesaikan')
+                                    @php
+                                        $arrayjumlah[] = $memos;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            @php
+                                $jum1 = count($arrayjumlah);
+                            @endphp
+                            {{ $jum1 }}
+                        </h2>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Finished Memo
                         </h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
-                        <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
+                        <span class="opacity-7 text-muted"><i data-feather="check-square"></i></span>
                     </div>
                 </div>
             </div>
@@ -56,38 +75,61 @@
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <div class="d-inline-flex align-items-center">
-                            <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
+                            <h2 class="text-dark mb-1 font-weight-medium">
+                                @php
+                                    $arrayjumlah = [];
+                                @endphp
+                                @foreach ($complaints as $com)
+                                    @php
+                                        $arrayjumlah[] = $com;
+                                    @endphp
+                                @endforeach
+                                @php
+                                    $jum2 = count($arrayjumlah);
+                                @endphp
+                                {{ $jum2 }}
+                            </h2>
                             <span
-                                class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">Received</span>
                         </div>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Complaint</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
-                        <span class="opacity-7 text-muted"><i data-feather="file-plus"></i></span>
+                        <span class="opacity-7 text-muted"><i data-feather="inbox"></i></span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card border-right">
             <div class="card-body">
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
-                        <h2 class="text-dark mb-1 font-weight-medium">864</h2>
-                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Finished Compalint</h6>
+                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
+                            @php
+                                $arrayjumlah = [];
+                            @endphp
+                            @foreach ($complaints as $com)
+                                @if ($com['status'] == 'Terselesaikan')
+                                    @php
+                                        $arrayjumlah[] = $com;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            @php
+                                $jum3 = count($arrayjumlah);
+                            @endphp
+                            {{ $jum3 }}
+                        </h2>
+                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Finished Complaint
+                        </h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
-                        <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
+                        <span class="opacity-7 text-muted"><i data-feather="check-square"></i></span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- *************************************************************** -->
-    <!-- End First Cards -->
-    <!-- *************************************************************** -->
-    <!-- *************************************************************** -->
-    <!-- Start Sales Charts Section -->
-    <!-- *************************************************************** -->
     <div class="row">
         <div class="col-lg-4 col-md-12">
             <div class="card">
@@ -95,20 +137,46 @@
                     <h4 class="card-title">Status Product</h4>
                     <div id="campaign-v2" class="mt-2" style="height:283px; width:100%;"></div>
                     <ul class="list-style-none mb-0">
-                        <li>
-                            <i class="fas fa-circle text-primary font-10 mr-2"></i>
-                            <span class="text-muted">Direct Sales</span>
-                            <span class="text-dark float-right font-weight-medium">$2346</span>
-                        </li>
+
                         <li class="mt-3">
                             <i class="fas fa-circle text-danger font-10 mr-2"></i>
-                            <span class="text-muted">Referral Sales</span>
-                            <span class="text-dark float-right font-weight-medium">$2108</span>
+                            <span class="text-muted">Booked</span>
+                            <span class="text-dark float-right font-weight-medium">
+                                @php
+                                $arrayjumlah = [];
+                            @endphp
+                            @foreach ($product as $pr)
+                                @if ($pr['status'] == 'Booked')
+                                    @php
+                                        $arrayjumlah[] = $pr;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            @php
+                                $jum4 = count($arrayjumlah);
+                            @endphp
+                            {{ $jum4 }}
+                            </span>
                         </li>
                         <li class="mt-3">
                             <i class="fas fa-circle text-cyan font-10 mr-2"></i>
-                            <span class="text-muted">Affiliate Sales</span>
-                            <span class="text-dark float-right font-weight-medium">$1204</span>
+                            <span class="text-muted">Available</span>
+                            <span class="text-dark float-right font-weight-medium">
+                                @php
+                                $arrayjumlah = [];
+                            @endphp
+                            @foreach ($product as $pr)
+                                @if ($pr['status'] == 'Available')
+                                    @php
+                                        $arrayjumlah[] = $pr;
+                                    @endphp
+                                @endif
+                            @endforeach
+                            @php
+                                $jum5 = count($arrayjumlah);
+                            @endphp
+                            {{ $jum5 }}
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -144,4 +212,4 @@
         </div>
     </div>
 </div>
-@endsection
+    @endsection
