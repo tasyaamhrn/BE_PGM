@@ -119,26 +119,26 @@ class ComplaintController extends Controller
     public function feedback(Request $request,$id)
     {
         $complaint = Complaint::find($id);
+        $data = $request->all();
         $rules = [
             'feedback_score'         => 'required',
             'feedback_deskripsi'         => 'required',
         ];
-        $complaintUpdate=$complaint->update([
-            'feedback_score' => $request->feedback_score,
-            'feedback_deskripsi' =>$request->feedback_deskripsi
-        ]);
-        if($complaintUpdate){
-            // return "oke";
-            return response()->json([
-                'meta' => [
-                    'code' => 200,
-                    'status' => 'success',
-                    'message' => 'Data Complaint updated successfully'
-                ],
-                
-            ],200);
+        $validator = Validator::make($data, $rules);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
         }
-        
+        $complaint->update($data);
+        return response()->json([
+            'meta' => [
+                'code' => 200,
+                'status' => 'success',
+                'message' => 'Data Complaint updated successfully'
+            ],
+            'data' => [
+                'complaint' => new FeedbackResource($complaint)
+            ]
+        ],200);
     }
 
 }

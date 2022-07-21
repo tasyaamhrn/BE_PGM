@@ -15,18 +15,18 @@ class ComplaintResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $request->id,
-            'customer_name' => $request->customer->name,
-            'category_name' => $request->category->name,
-            'type' => $request->type,
-            'judul' => $request->judul,
-            'deskripsi' => $request->deskripsi,
-            'tanggal' => $request->tanggal,
-            'status' => $request->status,
-            'bukti' => $request->bukti_url,
-            'feedback_score' => $request->feedback_score,
-            'feedback_deskripsi' => $request->feedback_deskripsi,
-            'tindak_lanjut' => $request->tindak_lanjut_url,
+            'id' => $this->id,
+            'customer_name' => $this->customer->name,
+            'category_name' => $this->category->name,
+            'type' => $this->type,
+            'judul' => $this->judul,
+            'deskripsi' => $this->deskripsi,
+            'tanggal' => $this->tanggal,
+            'status' => $this->status,
+            'bukti' => $this->bukti_url,
+            'feedback_score' => $this->feedback_score,
+            'feedback_deskripsi' => $this->feedback_deskripsi,
+            'tindak_lanjut' => $this->tindak_lanjut_url,
         ];
     }
 }
