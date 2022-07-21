@@ -17,18 +17,7 @@
                     <div>
                         <div class="d-inline-flex align-items-center">
                             <h2 class="text-dark mb-1 font-weight-medium">
-                                @php
-                                    $arrayjumlah = [];
-                                @endphp
-                                @foreach ($memo as $memos)
-                                    @php
-                                        $arrayjumlah[] = $memos;
-                                    @endphp
-                                @endforeach
-                                @php
-                                    $jum = count($arrayjumlah);
-                                @endphp
-                                {{ $jum }}
+                                {{$memo}}
                             </h2>
                             <span
                                 class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">Received</span>
@@ -46,20 +35,7 @@
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
-                            @php
-                                $arrayjumlah = [];
-                            @endphp
-                            @foreach ($memo as $memos)
-                                @if ($memos['status'] == 'Terselesaikan')
-                                    @php
-                                        $arrayjumlah[] = $memos;
-                                    @endphp
-                                @endif
-                            @endforeach
-                            @php
-                                $jum1 = count($arrayjumlah);
-                            @endphp
-                            {{ $jum1 }}
+                            {{$finished_memo}}
                         </h2>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Finished Memo
                         </h6>
@@ -76,18 +52,7 @@
                     <div>
                         <div class="d-inline-flex align-items-center">
                             <h2 class="text-dark mb-1 font-weight-medium">
-                                @php
-                                    $arrayjumlah = [];
-                                @endphp
-                                @foreach ($complaints as $com)
-                                    @php
-                                        $arrayjumlah[] = $com;
-                                    @endphp
-                                @endforeach
-                                @php
-                                    $jum2 = count($arrayjumlah);
-                                @endphp
-                                {{ $jum2 }}
+                                {{$complaints}}
                             </h2>
                             <span
                                 class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">Received</span>
@@ -105,20 +70,7 @@
                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                     <div>
                         <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
-                            @php
-                                $arrayjumlah = [];
-                            @endphp
-                            @foreach ($complaints as $com)
-                                @if ($com['status'] == 'Terselesaikan')
-                                    @php
-                                        $arrayjumlah[] = $com;
-                                    @endphp
-                                @endif
-                            @endforeach
-                            @php
-                                $jum3 = count($arrayjumlah);
-                            @endphp
-                            {{ $jum3 }}
+                            {{$finished_complaints}}
                         </h2>
                         <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Finished Complaint
                         </h6>
@@ -142,40 +94,14 @@
                             <i class="fas fa-circle text-danger font-10 mr-2"></i>
                             <span class="text-muted">Booked</span>
                             <span class="text-dark float-right font-weight-medium">
-                                @php
-                                $arrayjumlah = [];
-                            @endphp
-                            @foreach ($product as $pr)
-                                @if ($pr['status'] == 'Booked')
-                                    @php
-                                        $arrayjumlah[] = $pr;
-                                    @endphp
-                                @endif
-                            @endforeach
-                            @php
-                                $jum4 = count($arrayjumlah);
-                            @endphp
-                            {{ $jum4 }}
+                                {{$booked_products}}
                             </span>
                         </li>
                         <li class="mt-3">
                             <i class="fas fa-circle text-cyan font-10 mr-2"></i>
                             <span class="text-muted">Available</span>
                             <span class="text-dark float-right font-weight-medium">
-                                @php
-                                $arrayjumlah = [];
-                            @endphp
-                            @foreach ($product as $pr)
-                                @if ($pr['status'] == 'Available')
-                                    @php
-                                        $arrayjumlah[] = $pr;
-                                    @endphp
-                                @endif
-                            @endforeach
-                            @php
-                                $jum5 = count($arrayjumlah);
-                            @endphp
-                            {{ $jum5 }}
+                                {{$available_products}}
                             </span>
                         </li>
                     </ul>

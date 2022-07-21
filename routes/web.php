@@ -7,13 +7,13 @@ use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\admin\ComplaintsController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\HistoryMemoController;
 use App\Http\Controllers\Admin\MeetingController;
 use App\Http\Controllers\admin\MemoController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\admin\StatusBookingController;
 use App\Http\Controllers\api\BookingController;
-use App\Http\Controllers\admin\DashboardController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 
