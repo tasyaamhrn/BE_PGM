@@ -142,22 +142,21 @@ class CustomerController extends Controller
         $rules = [
             'name'          => 'required',
             'address'       => 'required',
-            'gender'        => 'required',
             'phone'         => 'required',
         ];
         $this->validate($request, [
         ]);
         $customer = Customer::find($id);
-        if (!$customer) {
-            return response()->json([
-                'meta' => [
-                    'code' => 404,
-                    'status' => 'Failed',
-                    'message' => 'Customer Not Found'
-                ],
+        // if (!$customer) {
+        //     return response()->json([
+        //         'meta' => [
+        //             'code' => 404,
+        //             'status' => 'Failed',
+        //             'message' => 'Customer Not Found'
+        //         ],
 
-            ],200);
-        }
+        //     ],200);
+        // }
         if (request()->hasFile('avatar')) {
             $avatar = request()->file('avatar')->store('avatar', 'public');
             if (Storage::disk('public')->exists($customer->avatar)) {
@@ -181,6 +180,7 @@ class CustomerController extends Controller
                 'message' => 'Data Customer updated successfully'
             ],
             'data' => [
+                
                 'customer' => $customer
             ]
         ]);
@@ -189,6 +189,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customer = Customer::findOrFail($id);
+        $user = User::where('id', $customer->user_id)->first();
         if ($customer) {
             return response()->json([
                 'meta' => [
@@ -197,6 +198,7 @@ class CustomerController extends Controller
                     'message' => 'Detail Customer',
                 ],
                 'data' => [
+                    'user'        => $user,
                     'customer' => $customer
                 ],
             ],200);
