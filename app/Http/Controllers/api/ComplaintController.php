@@ -58,7 +58,7 @@ class ComplaintController extends Controller
                     'message' => 'Detail Complaint'
                 ],
                 'data' => [
-                    'complaint' => new ComplaintResource($complaint)
+                    'complaints' => new ComplaintResource($complaint)
                 ]
             ],200);
         }else {
