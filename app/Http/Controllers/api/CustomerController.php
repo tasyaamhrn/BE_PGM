@@ -29,13 +29,13 @@ class CustomerController extends Controller
             'address' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255'],
         ];
-        // $avatar = null;
-        // if ($request->avatar instanceof UploadedFile) {
-        //     $avatar = $request->avatar->store('avatar', 'public');
-        //     $data['avatar'] = $avatar;
-        // }else{
-        //     unset($data['avatar']);
-        // }
+        $avatar = null;
+        if ($request->avatar instanceof UploadedFile) {
+            $avatar = $request->avatar->store('avatar', 'public');
+            $data['avatar'] = $avatar;
+        }else{
+            unset($data['avatar']);
+        }
         $validator = Validator::make($data, $rules);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
@@ -49,7 +49,7 @@ class CustomerController extends Controller
             'name' => $request->name,
             'nik'  => $request->nik,
             'address' => $request->address,
-            // 'avatar' => $avatar,
+            'avatar' => $avatar,
             'phone' => $request->phone,
             'user_id' => $register->id,
 
