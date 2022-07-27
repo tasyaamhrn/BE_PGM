@@ -65,5 +65,6 @@ class MemoController extends Controller
         ]);
 
         return redirect('/memo');
+        
     }
 }

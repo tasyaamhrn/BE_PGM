@@ -24,8 +24,8 @@
 </button>
 <button type="button" class=" btn btn-rounded btn-success text-white">
     <a class="fa fa-download text-white" aria-hidden="true"
-    href="{{ route('booking.pdf') }}/" role="button"></a>
-    Download PDF
+    href="{{ route('booking.pdf') }}/" role="button">Download PDF</a>
+    
 </button>
 @endif
 

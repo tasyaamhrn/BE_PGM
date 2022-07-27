@@ -77,6 +77,7 @@ class HistoryMemoController extends Controller
         }
         return redirect()->back();
 
+        
     }
     public function download ($memo_id)
     {
