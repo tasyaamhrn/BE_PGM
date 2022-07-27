@@ -172,9 +172,9 @@
         }
 
         .overlay {
-            background: #FF416C;
-            background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-            background: linear-gradient(to right, #FF4B2B, #FF416C);
+            background: #FFFF;
+            /* background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+            background: linear-gradient(to right, #FF4B2B, #FF416C); */
             background-repeat: no-repeat;
             background-size: cover;
             background-position: 0 0;
@@ -341,7 +341,7 @@
                 <div class="overlay">
 
                     <div class="overlay-panel overlay-right ">
-                        <img id="rumah" src="{{ asset('assets/images/hitam.png')}}"
+                        <img id="rumah" src="{{ asset('assets/images/LOGIN4.png')}}"
                             {{-- <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/curved-images/curved6.jpg')"></div> --}}
                             </div> </div> </div> </div> <script>
                         const signUpButton = document.getElementById('signUp');

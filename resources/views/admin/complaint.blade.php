@@ -38,6 +38,7 @@
                 <th>Status</th>
                 <th>Bukti</th>
                 <th>Tindak Lanjut</th>
+                <th>Tanggal Penyelesaian</th>
                 <th>Feedback Scores</th>
                 <th>Feedback Deskripsi</th>
                 <th>Action</th>
@@ -85,6 +86,7 @@
                         href="{{ route('bukti-complaint.download', $c->id) }}/" role="button">Download</a>
                 </td>
                 @endif
+                <td>{{$c->tgl_penyelesaian}}</td>
                 <td>{{$c->feedback_score}}</td>
                 <td>{{$c->feedback_deskripsi}}</td>
                 <td class="d-flex flex-row">

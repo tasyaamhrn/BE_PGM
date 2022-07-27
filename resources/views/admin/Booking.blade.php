@@ -22,9 +22,10 @@
 <button type="button" id="add" class=" btn btn-rounded" data-toggle="modal" data-target="#warning-header-modal">
     Add Booking
 </button>
-<button >
-    <a class="fa fa-download" aria-hidden="true"
-    href="{{ route('booking.pdf') }}/" role="button">Download PDF</a>
+<button type="button" class=" btn btn-rounded btn-success text-white">
+    <a class="fa fa-download text-white" aria-hidden="true"
+    href="{{ route('booking.pdf') }}/" role="button"></a>
+    Download PDF
 </button>
 @endif
 

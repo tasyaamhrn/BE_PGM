@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ComplaintResource;
 use App\Http\Resources\FeedbackResource;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Complaint;
 use App\Models\Customer;
@@ -75,9 +76,10 @@ class ComplaintController extends Controller
     public function add(Request $request)
     {
         $data = $request->all();
+        $getCategoryId=Category::where('name',$request->name)->first();
+        // return $getCategoryId->id;
         $rules = [
             'cust_id'=> 'required',
-            'category_id'=> 'required',
             'type'=> 'required',
             'judul'=> 'required',
             'deskripsi'=> 'required',
@@ -97,7 +99,7 @@ class ComplaintController extends Controller
         }
         $complaint = Complaint::create([
             'cust_id' => $request->cust_id,
-            'category_id' => $request->category_id,
+            'category_id' => $getCategoryId->id,
             'type' => $request->type,
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
@@ -107,13 +109,13 @@ class ComplaintController extends Controller
         ]);
         return response()->json([
             'meta' => [
-                'code' => 201,
+                'code' => 200,
                 'status' => 'Success',
                 'message' => 'Data Complaint Created'
             ],
-            'data' => [
-                'complaint' => $complaint
-            ]
+            // 'data' => [
+            //     'complaint' => $complaint
+            // ]
         ],200);
     }
     public function feedback(Request $request,$id)

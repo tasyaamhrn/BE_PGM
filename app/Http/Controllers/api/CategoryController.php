@@ -15,6 +15,10 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $category = Category::get();
+        $array=array();
+        foreach($category as $item){
+            $array[]=$item->name;
+        }
         $response = [
             'meta' => [
                 'code'  => 200,
@@ -22,7 +26,7 @@ class CategoryController extends Controller
                 'message' => 'Data Category Found'
             ],
             'data' => [
-                'category' => $category
+                'category' => $array
             ],
         ];
         return response()->json($response, Response::HTTP_OK);
