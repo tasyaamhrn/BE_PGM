@@ -134,9 +134,6 @@ class ComplaintController extends Controller
                 'code' => 200,
                 'status' => 'success',
                 'message' => 'Data Complaint updated successfully'
-            ],
-            'data' => [
-                'complaint' => new FeedbackResource($complaint)
             ]
         ],200);
     }

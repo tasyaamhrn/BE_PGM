@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CategoryResource;
 use App\Models\Category;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
@@ -13,11 +14,16 @@ class CategoryController extends Controller
 {
     public function index(Request $request)
     {
-        $category = Category::first();
+        $category = Category::get();
         $response = [
-            'success' => true,
-            'message' => 'Data Kategori',
-            'data' => new CategoryResource($category)
+            'meta' => [
+                'code'  => 200,
+                'status' => 'success',
+                'message' => 'Data Category Found'
+            ],
+            'data' => [
+                'category' => $category
+            ],
         ];
         return response()->json($response, Response::HTTP_OK);
 

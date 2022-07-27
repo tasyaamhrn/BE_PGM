@@ -341,7 +341,7 @@
                 <div class="overlay">
 
                     <div class="overlay-panel overlay-right ">
-                        <img id="rumah" src="{{ asset('assets/images/rumah.png')}}"
+                        <img id="rumah" src="{{ asset('assets/images/hitam.png')}}"
                             {{-- <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('../assets/img/curved-images/curved6.jpg')"></div> --}}
                             </div> </div> </div> </div> <script>
                         const signUpButton = document.getElementById('signUp');
