@@ -64,7 +64,7 @@ class HistoryMemoController extends Controller
                 'catatan' => $request->catatan,
 
             ]);
-            $memo = Memo::find($history->memo_id)->first();
+            $memo = Memo::find($history->memo_id);
             $memo->status = $request->status;
             $memo->save();
         }else{
@@ -77,7 +77,7 @@ class HistoryMemoController extends Controller
         }
         return redirect()->back();
 
-        
+
     }
     public function download ($memo_id)
     {

@@ -8,6 +8,7 @@ use App\Http\Resources\FeedbackResource;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Complaint;
+use Carbon\Carbon;
 use App\Models\Customer;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
@@ -83,7 +84,7 @@ class ComplaintController extends Controller
             'type'=> 'required',
             'judul'=> 'required',
             'deskripsi'=> 'required',
-            'tanggal'=> 'required',
+            // 'tanggal'=> 'required',
             'bukti'=> 'required',
         ];
         $bukti = null;
@@ -103,7 +104,7 @@ class ComplaintController extends Controller
             'type' => $request->type,
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'tanggal' => $request->tanggal,
+            'tanggal' => Carbon::now(),
             'status' => 'Terkirim',
             'bukti' => $bukti,
         ]);
