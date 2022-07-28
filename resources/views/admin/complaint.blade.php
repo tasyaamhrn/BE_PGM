@@ -87,8 +87,22 @@
                 </td>
                 @endif
                 <td>{{$c->tgl_penyelesaian}}</td>
-                <td>{{$c->feedback_score}}</td>
-                <td>{{$c->feedback_deskripsi}}</td>
+                {{-- <td>{{$c->feedback_score}}</td> --}}
+                @if ($c->feedback_score <= 3)
+                <td style="color:red; font-weight:bold;">{{$c->feedback_score}}</td>
+                @elseif ($c->feedback_score > 3)
+                <td style="color:#32CD32; font-weight:bold;">
+                    {{$c->feedback_score}}
+                </td>
+                @endif
+                @if ($c->feedback_score <= 3)
+                <td style="color:red; font-weight:bold;">{{$c->feedback_deskripsi}}</td>
+                @elseif ($c->feedback_score > 3)
+                <td style="color:#32CD32; font-weight:bold;">
+                    {{$c->feedback_deskripsi}}
+                </td>
+                @endif
+
                 <td class="d-flex flex-row">
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$c->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>

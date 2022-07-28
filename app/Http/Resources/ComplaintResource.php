@@ -27,6 +27,7 @@ class ComplaintResource extends JsonResource
             'feedback_score' => $this->feedback_score,
             'feedback_deskripsi' => $this->feedback_deskripsi,
             'tindak_lanjut' => $this->tindak_lanjut_url,
+            'tgl_penyelesaian' => $this->tgl_penyelesaian,
         ];
     }
 }

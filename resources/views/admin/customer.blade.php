@@ -126,7 +126,11 @@
                 <td>{{$c->name}}</td>
                 <td>{{$c->address}}</td>
                 <td>{{$c->phone}}</td>
-                <td><img src="{{asset($c->avatar )}}" height="40px" width="40px" />
+                @if ($c->avatar==null)
+                <td><i>None</i></td>
+                @elseif($c->avatar)
+                <td><img src="{{ url('storage').'/'.$c->avatar }}" height="40px" width="40px" />
+                @endif
 
 
                 <td>
