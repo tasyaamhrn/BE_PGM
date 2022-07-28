@@ -81,10 +81,13 @@
                 </div>
             </div>
         </div>
+    </div><div class="col-lg-12">
+
+    <canvas id="myChart"></canvas>
     </div>
 
 
-
+{{--
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -93,25 +96,65 @@
                 </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="{{ asset('assets/images/slide2.jpg')}}" class="d-block w-100 h-50" alt="1">
+                    <img src="{{ asset('assets/images/rmh.png')}}" class="d-block w-75 m-auto" alt="1">
                   </div>
                   <div class="carousel-item">
-                    <img src="{{ asset('assets/images/slide2.jpg')}}" class="d-block w-100 h-50 " alt="2">
+                    <img src="{{ asset('assets/images/rmh.png')}}" class="d-block w-75 m-auto " alt="2">
                   </div>
                   <div class="carousel-item">
-                    <img src="{{ asset('assets/images/slide2.jpg')}}" class="d-block w-100 h-50 " alt="3">
+                    <img src="{{ asset('assets/images/rmh.png')}}" class="d-block w-75 m-auto" alt="3">
                   </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+                <button class="carousel-control-prev" style="background-color: Transparent;  border: none;"  type="button" data-target="#carouselExampleIndicators" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                <button class="carousel-control-next" style="background-color: Transparent;  border: none;"  type="button" data-target="#carouselExampleIndicators" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </button>
-              </div>
+              </div> --}}
 </div>
 
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Available Blok A', 'Booked Blok A','Available Blok B', 'Booked Blok B'],
+            datasets: [{
+                label: 'Dataset1',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>
+
     @endsection

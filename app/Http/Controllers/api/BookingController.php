@@ -7,6 +7,7 @@ use App\Http\Resources\BookingResource;
 use App\Models\Booking;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\status_booking;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Http\UploadedFile;
@@ -56,13 +57,13 @@ class BookingController extends Controller
     }
     public function add(Request $request)
     {
-
+        $status = status_booking::where('name', 'TERKIRIM')->first();
         $data = $request->all();
         $rules = [
             'cust_id'=> 'required',
             'product_id'=> 'required',
             'bukti'=> 'required',
-            'status'=> 'required',
+            // 'status'=> 'required',
         ];
         $bukti = null;
         if ($request->bukti instanceof UploadedFile) {
@@ -78,7 +79,7 @@ class BookingController extends Controller
         $booking = Booking::create([
             'cust_id' => $request->cust_id,
             'product_id' => $request->product_id,
-            'status' => $request->status,
+            'status' => $status->id,
             'bukti' => $bukti,
         ]);
 

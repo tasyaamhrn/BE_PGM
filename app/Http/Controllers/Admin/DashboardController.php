@@ -26,6 +26,8 @@ class DashboardController extends Controller
         $product = Product::all();
         $logged_in = Auth::id();
 
+        $booked_blokA = Product::where('blok', 'A')->where('status', 'Booked')->count();
+        $available_blokA = Product::where('blok', 'A')->where('status', 'Available')->count();
         $booked_products = Product::where('status', 'Booked')->count();
         $available_products = Product::where('status', 'Available')->count();
         if (Auth::user()->role_id == 1) {
@@ -60,7 +62,7 @@ class DashboardController extends Controller
         return view('admin.dashboard', compact(
             'product','employee', 'memo','total_complaints',
              'name','finished_memo','finished_complaints',
-             'booked_products','available_products'
+             'booked_products','available_products','booked_blokA'
         ));
     }
 }
