@@ -46,7 +46,6 @@
                         <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="blok">
                             <option selected>Choose...</option>
                             <option value="A">A</option>
-                            <option value="B">B</option>
                             <option value="C">C</option>
                         </select>
                     </div>

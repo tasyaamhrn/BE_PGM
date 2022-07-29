@@ -124,27 +124,40 @@
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Available Blok A', 'Booked Blok A','Available Blok B', 'Booked Blok B'],
+            labels: ['Blok A', 'Blok C'],
             datasets: [{
-                label: 'Dataset1',
-                data: [12, 19, 3, 5, 2, 3],
+
+                label: 'Available',
+                data: ['<?php echo $available_blokA; ?>', '<?php echo $available_blokC; ?>' ],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
+
+               "#5F76E8",
+            //   "#FF4F70",
+
+            ],
+            borderColor: [
+
+              "#1D7A46",
+            //   "#CB252B",
+            ],
+            borderWidth: [1, 1]
+            },
+            {
+
+                label: 'Booked',
+                data: ['<?php echo $booked_blokA; ?>','<?php echo $booked_blokC; ?>' ],
+                backgroundColor: [
+
+            //    "#5F76E8",
+               "#FF4F70",
+
+            ],
+            borderColor: [
+
+            //   "#1D7A46",
+              "#CB252B",
+            ],
+            borderWidth: [1, 1]
             }]
         },
         options: {
@@ -153,6 +166,7 @@
                     beginAtZero: true
                 }
             }
+
         }
     });
     </script>

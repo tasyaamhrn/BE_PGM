@@ -107,12 +107,7 @@
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$c->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
-                  <form method="post" action="{{ route('category.destroy', $c->id) }}">
-                    @method('DELETE')
-                    @csrf
-                    <button class="btn btn-circle btn-lg btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
-                      <i class="fa fa-trash"></i></button>
-                  </form>
+
                 </td>
               </tr>
               <!-- Modal Edit -->

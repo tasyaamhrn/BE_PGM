@@ -32,7 +32,7 @@ class ComplaintsController extends Controller
             // ngambil kategorinya, mumpung sama2 pake depart_id. Asumsi 1 departemen banyak kategori
             $category = Category::where('dept_id',$employee->dept_id)->get();
             // ngambil komplain berdasarkan id nya categories
-            $complaints = Complaint::whereIn('category_id',$category->modelKeys())->get();
+            $complaints = Complaint::whereIn('category_id',$category->modelKeys())->orderBy('type', 'desc')->orderBy('tanggal', 'asc')->get();
         }else{
             $employee = Employee::all();
             $department = Department::all();
