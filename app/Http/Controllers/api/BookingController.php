@@ -95,4 +95,28 @@ class BookingController extends Controller
         ],200);
 
     }
+    public function show($id){
+        $booking = Booking::find($id);
+        if ($booking) {
+            return response()->json([
+                'meta' => [
+                    'code' => 200,
+                    'status' => 'success',
+                    'message' => 'Detail Booking'
+                ],
+                'data' => [
+                    'bookings' => new BookingResource($booking)
+                ]
+                
+            ],200);
+        }else {
+            return response()->json([
+                'meta' => [
+                    'code' => 404,
+                    'status' => 'Failed',
+                    'message' => 'Data Not Found',
+                ],
+            ],200);;
+        }
+    }
 }

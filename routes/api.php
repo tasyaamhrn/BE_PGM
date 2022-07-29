@@ -56,7 +56,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('memo/add', [MemoController::class, 'add']);
     Route::get('booking', [BookingController::class, 'index']);
     Route::post('booking/add', [BookingController::class, 'add']);
-
+    Route::get('booking/{id}', [BookingController::class, 'show']);
 });
 
 
