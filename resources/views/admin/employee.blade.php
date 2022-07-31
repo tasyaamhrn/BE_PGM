@@ -135,7 +135,7 @@
                 @if ($e->avatar==null)
                 <td><i>None</i></td>
                 @elseif($e->avatar)
-                <td><img src="{{ url('storage').'/'.$e->avatar }}" height="40px" width="40px" />
+                <td><img src="{{ url('public/storage').'/'.$e->avatar }}" height="40px" width="40px" />
                 @endif
                 <td>
                   {{$e->department->name}}

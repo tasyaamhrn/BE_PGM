@@ -86,14 +86,14 @@ class ComplaintsController extends Controller
     public function downloadBukti($complaint_id)
     {
         $download = Complaint::find($complaint_id);
-        $pathFile = storage_path('app\public/'. $download->bukti);
+        $pathFile = storage_path('/app/public/'. $download->bukti);
 
         return response()->download($pathFile);
     }
     public function download_tindak_lanjut($complaint_id)
     {
         $download = Complaint::find($complaint_id);
-        $pathFile = storage_path('app\public/'. $download->tindak_lanjut);
+        $pathFile = storage_path('/app/public/'. $download->tindak_lanjut);
 
         return response()->download($pathFile);
     }

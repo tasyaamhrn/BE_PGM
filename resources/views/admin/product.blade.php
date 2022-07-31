@@ -146,7 +146,7 @@
                                 <td>{{$p->status}}</td>
                                 <td>{{$p->tanah_lebih}}</td>
                                 <td>{{$p->discount}}</td>
-                                <td><img src="{{ url('storage').'/'.$p->image }}" height="40px" width="40px" />
+                                <td><img src="{{ url('public/storage').'/'.$p->image }}" height="40px" width="40px" />
 
                                 <td class="d-flex flex-row">
                                     <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$p->id }}">

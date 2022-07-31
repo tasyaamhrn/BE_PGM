@@ -156,7 +156,7 @@
                                 <td class="d-flex flex-row">
 
                                     <a id="detail" class="btn btn-circle btn-lg btn-info  text-white" type="button"
-                                        href="{{ url('/memo/history/'.$m->id) }}">
+                                        href="{{ route('memo.history',$m->id) }}">
                                         <span class="btn-label"><i class="fa fa-info"></i></span>
                                     </a>
                                 </td>

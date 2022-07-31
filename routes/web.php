@@ -1,19 +1,18 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\admin\BookingController as AdminBookingController;
+use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\DepartmentController;
 use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\CategoriesController;
-use App\Http\Controllers\admin\ComplaintsController;
+use App\Http\Controllers\Admin\ComplaintsController;
 use App\Http\Controllers\Admin\CustomerController;
-use App\Http\Controllers\admin\DashboardController;
-use App\Http\Controllers\admin\HistoryMemoController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HistoryMemoController;
 use App\Http\Controllers\Admin\MeetingController;
-use App\Http\Controllers\admin\MemoController;
+use App\Http\Controllers\Admin\MemoController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\admin\StatusBookingController;
-use App\Http\Controllers\api\BookingController;
+use App\Http\Controllers\Admin\StatusBookingController;
 use App\Http\Middleware\Role;
 use Illuminate\Support\Facades\Route;
 

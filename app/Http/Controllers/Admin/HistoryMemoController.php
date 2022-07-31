@@ -82,7 +82,7 @@ class HistoryMemoController extends Controller
     public function download ($memo_id)
     {
         $download = history_memo::where('id', $memo_id)->firstOrFail();
-        $pathFile = storage_path('app\public/'. $download->bukti);
+        $pathFile = storage_path('/app/public/'. $download->bukti);
 
         return response()->download($pathFile);
     }

@@ -28,7 +28,7 @@ class BookingController extends Controller
             $employee_name = Employee::where('user_id', $logged_in)->select('name')->get();
             $name = $employee_name[0]->name;
         }
-        return view('admin.booking', compact('booking','employee','department', 'name', 'status'));
+        return view('admin.Booking', compact('booking','employee','department', 'name', 'status'));
     }
     public function update(Request $request, $id)
     {
@@ -46,7 +46,7 @@ class BookingController extends Controller
     public function download ($booking_id)
     {
         $download = Booking::find($booking_id);
-        $pathFile = storage_path('app\public/'. $download->bukti);
+        $pathFile = storage_path('/app/public/'. $download->bukti);
 
         return response()->download($pathFile);
     }
