@@ -96,6 +96,7 @@
                 <th>Notulensi</th>
                 <th>Notulis</th>
                 <th>Action</th>
+
               </tr>
             </thead>
             <tbody>
@@ -105,7 +106,8 @@
                 <td>{{$m->judul}}</td>
                 <td>{{$m->notulensi}}</td>
                 <td>{{$m->employee->name}}</td>
-                <td>
+                @if ($name == $m->employee->name)
+                <td class="d-flex flex-row">
                   <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$m->id }}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
                   </a>
@@ -116,6 +118,9 @@
                       <i class="fa fa-trash"></i></button>
                   </form>
                 </td>
+                @else
+                <td>None</td>
+                @endif
               </tr>
               <!-- Modal Edit -->
               <div id="editModal{{$m->id }}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="warning-header-modalLabel" aria-hidden="true">

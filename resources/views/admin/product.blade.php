@@ -148,7 +148,7 @@
                                 <td>{{$p->discount}}</td>
                                 <td><img src="{{ url('storage').'/'.$p->image }}" height="40px" width="40px" />
 
-                                <td>
+                                <td class="d-flex flex-row">
                                     <a id="edit" class="btn btn-circle btn-lg btn-warning edit" type="button" data-toggle="modal" data-target="#editModal{{$p->id }}">
                                         <span class="btn-label"><i class="far fa-edit"></i></span>
                                     </a>

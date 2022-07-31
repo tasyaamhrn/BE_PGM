@@ -133,7 +133,7 @@
                 @endif
 
 
-                <td>
+                <td class="d-flex flex-row">
 
                   <button id="edit" type="button" class="btn btn-circle btn-lg btn-warning edit" data-toggle="modal" data-target="#editModal-{{$c->id}}">
                     <span class="btn-label"><i class="far fa-edit"></i></span>
