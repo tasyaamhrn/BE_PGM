@@ -276,7 +276,7 @@
         }
 
         footer i {
-            color: red;
+            /* color: red; */
         }
 
         footer a {
